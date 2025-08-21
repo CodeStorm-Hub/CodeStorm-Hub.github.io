@@ -1,11 +1,135 @@
----
-layout: default
-title: Services
-description: Comprehensive technology services including web development, mobile apps, cloud solutions, and digital transformation consulting.
-keywords: web development, mobile apps, cloud solutions, software development, digital transformation, consulting
----
-
-<!-- Services Hero Section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive technology services including web development, mobile apps, cloud solutions, and digital transformation consulting.">
+    <meta name="keywords" content="web development, mobile apps, cloud solutions, software development, digital transformation, consulting">
+    <meta name="author" content="">
+    
+    <!-- OpenGraph tags -->
+    <meta property="og:title" content="Services - ">
+    <meta property="og:description" content="Comprehensive technology services including web development, mobile apps, cloud solutions, and digital transformation consulting.">
+    <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    <meta property="og:url" content="http://localhost:4000/services.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:title" content="Services - ">
+    <meta name="twitter:description" content="Comprehensive technology services including web development, mobile apps, cloud solutions, and digital transformation consulting.">
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    
+    <title>Services - </title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="CodeStorm Hub">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <!-- Theme script (prevent FOUC) -->
+    <script>
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+    
+    
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="/" class="logo" aria-label="CodeStorm Hub home">
+                    <img src="/assets/images/logo.png" alt="CodeStorm Hub" width="40" height="40" loading="eager">
+                    <span class="logo-text">CodeStorm Hub</span>
+                </a>
+                
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+            
+            <div class="navbar-menu">
+                <ul class="navbar-nav" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="/" class="nav-link " role="menuitem">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/about/" class="nav-link " role="menuitem">
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/services/" class="nav-link active" role="menuitem">
+                            Services
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/portfolio/" class="nav-link " role="menuitem">
+                            Portfolio
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/contact/" class="nav-link " role="menuitem">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-actions">
+                    <!-- Theme toggle -->
+                    <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <i class="fas fa-moon dark-icon"></i>
+                        <i class="fas fa-sun light-icon"></i>
+                    </button>
+                    
+                    <!-- CTA Button -->
+                    <a href="/contact/" class="btn btn-primary cta-btn">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+    
+    <!-- Loading spinner -->
+    <div id="loading-spinner" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Main content -->
+    <main id="main-content" role="main">
+        <!-- Services Hero Section -->
 <section class="services-hero">
     <div class="container">
         <div class="services-hero-content" data-aos="fade-up">
@@ -60,7 +184,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                         </div>
                     </div>
                     <div class="service-action">
-                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">
+                        <a href="/contact/" class="btn btn-primary">
                             Get Started
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -106,7 +230,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                         </div>
                     </div>
                     <div class="service-action">
-                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">
+                        <a href="/contact/" class="btn btn-primary">
                             Get Started
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -158,7 +282,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                     </div>
                     
                     <div class="service-action">
-                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">
+                        <a href="/contact/" class="btn btn-primary">
                             Get Started
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -211,7 +335,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                     </div>
                     
                     <div class="service-action">
-                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">
+                        <a href="/contact/" class="btn btn-primary">
                             Get Started
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -264,7 +388,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                     </div>
                     
                     <div class="service-action">
-                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">
+                        <a href="/contact/" class="btn btn-primary">
                             Get Started
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -317,7 +441,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                     </div>
                     
                     <div class="service-action">
-                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">
+                        <a href="/contact/" class="btn btn-primary">
                             Get Started
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -438,7 +562,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                 </div>
                 
                 <div class="pricing-action">
-                    <a href="{{ '/contact/' | relative_url }}" class="btn btn-outline btn-block">
+                    <a href="/contact/" class="btn btn-outline btn-block">
                         Get Started
                     </a>
                 </div>
@@ -469,7 +593,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                 </div>
                 
                 <div class="pricing-action">
-                    <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-block">
+                    <a href="/contact/" class="btn btn-primary btn-block">
                         Get Started
                     </a>
                 </div>
@@ -499,7 +623,7 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                 </div>
                 
                 <div class="pricing-action">
-                    <a href="{{ '/contact/' | relative_url }}" class="btn btn-outline btn-block">
+                    <a href="/contact/" class="btn btn-outline btn-block">
                         Contact Us
                     </a>
                 </div>
@@ -600,11 +724,11 @@ keywords: web development, mobile apps, cloud solutions, software development, d
                 Get a free consultation and project estimate today.
             </p>
             <div class="cta-buttons">
-                <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-lg">
+                <a href="/contact/" class="btn btn-primary btn-lg">
                     Start Your Project
                     <i class="fas fa-rocket"></i>
                 </a>
-                <a href="{{ '/portfolio/' | relative_url }}" class="btn btn-outline btn-lg">
+                <a href="/portfolio/" class="btn btn-outline btn-lg">
                     View Our Work
                     <i class="fas fa-eye"></i>
                 </a>
@@ -612,3 +736,110 @@ keywords: web development, mobile apps, cloud solutions, software development, d
         </div>
     </div>
 </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section footer-brand">
+                <div class="footer-logo">
+                    <img src="/assets/images/logo.png" alt="CodeStorm Hub" width="40" height="40" loading="lazy">
+                    <span class="logo-text">CodeStorm Hub</span>
+                </div>
+                <p class="footer-description">
+                    Innovative technology solutions that transform businesses and create exceptional digital experiences.
+                </p>
+                <div class="social-links">
+                    <a href="https://twitter.com/" class="social-link" aria-label="Follow us on Twitter" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/" class="social-link" aria-label="Connect on LinkedIn" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/" class="social-link" aria-label="View our GitHub" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:" class="social-link" aria-label="Send us an email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="/services/#web-development">Web Development</a></li>
+                    <li><a href="/services/#mobile-apps">Mobile Apps</a></li>
+                    <li><a href="/services/#cloud-solutions">Cloud Solutions</a></li>
+                    <li><a href="/services/#consulting">Consulting</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/about/#team">Our Team</a></li>
+                    <li><a href="/portfolio/">Portfolio</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Newsletter</h3>
+                <p class="newsletter-description">Stay updated with our latest news and insights.</p>
+                <form class="newsletter-form" action="#" method="post">
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address">
+                        <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <p>&copy; 2025 . All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <a href="/terms-of-service/">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "",
+        "url": "http://localhost:4000",
+        "logo": "http://localhost:4000/assets/images/logo.png",
+        "description": "",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-555-123-4567",
+            "contactType": "customer service"
+        },
+        "sameAs": [
+            "https://twitter.com/",
+            "https://www.linkedin.com/company/",
+            "https://github.com/"
+        ]
+    }
+    </script>
+</body>
+</html>
