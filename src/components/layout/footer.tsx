@@ -4,7 +4,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
+    <footer id="footer" className="border-t bg-background">
       <Container>
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -26,7 +26,8 @@ export function Footer() {
                   href="https://github.com/CodeStorm-Hub" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  aria-label="CodeStorm Hub on GitHub"
                 >
                   <GitHubLogoIcon className="h-5 w-5" />
                 </Link>
@@ -38,22 +39,22 @@ export function Footer() {
               <h3 className="text-sm font-semibold mb-4">Navigation</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="/about" className="hover:text-foreground transition-colors">
+                  <Link href="/about" className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects" className="hover:text-foreground transition-colors">
+                  <Link href="/projects" className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
                     Projects
                   </Link>
                 </li>
                 <li>
-                  <Link href="/team" className="hover:text-foreground transition-colors">
+                  <Link href="/team" className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
                     Team
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-foreground transition-colors">
+                  <Link href="/contact" className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
                     Contact
                   </Link>
                 </li>
@@ -69,18 +70,18 @@ export function Footer() {
                     href="https://github.com/CodeStorm-Hub" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                   >
                     GitHub
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contributing" className="hover:text-foreground transition-colors">
+                  <Link href="/contributing" className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
                     Contributing
                   </Link>
                 </li>
                 <li>
-                  <Link href="/code-of-conduct" className="hover:text-foreground transition-colors">
+                  <Link href="/code-of-conduct" className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
                     Code of Conduct
                   </Link>
                 </li>
