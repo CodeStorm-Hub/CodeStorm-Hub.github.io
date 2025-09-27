@@ -1,0 +1,106 @@
+{
+  "name": "CodeStorm Hub MCP Configuration",
+  "description": "Model Context Protocol configuration for enhanced GitHub Copilot assistance",
+  "version": "1.0.0",
+  "mcp": {
+    "servers": {
+      "playwright": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/server-playwright"],
+        "description": "Playwright MCP server for browser automation and testing"
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/server-filesystem", "/home/runner/work/CodeStorm-Hub.github.io/CodeStorm-Hub.github.io/src"],
+        "description": "Filesystem access for source code analysis"
+      }
+    },
+    "tools": [
+      {
+        "name": "project_analyzer",
+        "description": "Analyze project structure and dependencies",
+        "capabilities": [
+          "package.json analysis",
+          "dependency tree inspection",
+          "component structure mapping"
+        ]
+      },
+      {
+        "name": "ui_tester",
+        "description": "UI testing and visual regression detection",
+        "capabilities": [
+          "screenshot comparison",
+          "accessibility testing",
+          "responsive design validation"
+        ]
+      },
+      {
+        "name": "performance_monitor",
+        "description": "Monitor build performance and bundle size",
+        "capabilities": [
+          "bundle analysis",
+          "build time tracking",
+          "performance metrics"
+        ]
+      }
+    ]
+  },
+  "context": {
+    "project_type": "nextjs",
+    "framework_version": "15.5.4",
+    "language": "typescript",
+    "styling": "tailwindcss",
+    "ui_library": "radix-ui",
+    "deployment": "vercel",
+    "design_system": "vercel-inspired",
+    "typography": "geist-font",
+    "color_system": "radix-colors",
+    "accessibility": "wcag-2.1-aa",
+    "performance_target": "core-web-vitals"
+  },
+  "capabilities": {
+    "code_generation": {
+      "components": true,
+      "pages": true,
+      "utilities": true,
+      "types": true,
+      "design_tokens": true,
+      "animations": true
+    },
+    "testing": {
+      "unit_tests": false,
+      "e2e_tests": true,
+      "visual_tests": true,
+      "accessibility_tests": true,
+      "performance_tests": true
+    },
+    "optimization": {
+      "bundle_splitting": true,
+      "image_optimization": true,
+      "css_optimization": true,
+      "core_web_vitals": true,
+      "seo_optimization": true
+    },
+    "design_validation": {
+      "accessibility_checks": true,
+      "responsive_testing": true,
+      "color_contrast": true,
+      "typography_validation": true,
+      "component_documentation": true
+    }
+  },
+  "workflows": {
+    "development": [
+      "npm install",
+      "npm run dev"
+    ],
+    "testing": [
+      "npm run lint",
+      "npm run build"
+    ],
+    "deployment": [
+      "npm run build",
+      "vercel deploy"
+    ]
+  }
+}
