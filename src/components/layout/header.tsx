@@ -7,7 +7,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header id="navigation" className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <Container>
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -20,28 +20,28 @@ export function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6" aria-label="Main navigation">
             <Link 
               href="/about" 
-              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             >
               About
             </Link>
             <Link 
               href="/projects" 
-              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             >
               Projects
             </Link>
             <Link 
               href="/team" 
-              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             >
               Team
             </Link>
             <Link 
               href="/contact" 
-              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             >
               Contact
             </Link>
