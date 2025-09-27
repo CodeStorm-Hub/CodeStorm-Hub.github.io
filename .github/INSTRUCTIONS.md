@@ -45,17 +45,28 @@ npm run dev
 - **Constants**: Use UPPER_SNAKE_CASE (`MY_CONSTANT`)
 
 ### Component Structure
-- Use TypeScript for all components
-- Prefer functional components with hooks
-- Use Radix UI primitives when possible
-- Follow the existing component patterns in the codebase
-- Export components as default exports
+- Use TypeScript for all components with proper interface definitions
+- Prefer functional components with hooks following React best practices
+- Use Radix UI primitives as foundation for accessible components
+- Implement compound component patterns for complex UI elements
+- Follow polymorphic component design for flexible APIs
+- Export components as default exports with named type exports
+- Use composition over inheritance for component architecture
+- Implement proper error boundaries and loading states
+- Follow Storybook documentation patterns for component stories
+- Ensure components are responsive and mobile-first
 
 ### Styling Guidelines
-- Use Tailwind CSS utility classes
-- Follow the design system established in the project
-- Utilize Radix Colors for consistent color schemes
-- Prefer composition over customization for UI components
+- Use Tailwind CSS utility classes following the design system
+- Implement Radix Colors for semantic color usage
+- Follow Vercel's design engineering principles for component composition
+- Use Geist font family for typography (sans and mono variants)
+- Maintain consistent spacing using Tailwind's spacing scale
+- Ensure responsive design with mobile-first approach
+- Implement proper dark/light mode support
+- Use CSS Grid and Flexbox for modern layout patterns
+- Apply container queries for component-level responsiveness
+- Optimize for accessibility with proper contrast ratios
 
 ## Testing and Quality
 
@@ -89,12 +100,58 @@ npm run dev
 - Use proper TypeScript typing
 - Follow existing utility patterns
 
-## Design System
-This project uses a design system based on:
-- Radix UI primitives for accessibility
-- Radix Colors for consistent theming
-- Tailwind CSS for utility-first styling
-- Vercel design principles
+## Design System & Principles
+
+This project follows a comprehensive design system inspired by modern design engineering practices:
+
+### Design Engineering Principles (Vercel-Inspired)
+- **Design-Engineering Fusion**: Components are built with both design and engineering considerations
+- **System Thinking**: Every component contributes to a cohesive design system
+- **Progressive Enhancement**: Start with accessible basics, enhance with advanced features
+- **Performance-First**: Visual design never compromises core web vitals
+- **Consistency**: Unified patterns across all user interface elements
+
+### Typography System (Geist Font)
+- **Primary Font**: Geist Sans for body text and interfaces
+- **Monospace Font**: Geist Mono for code and technical content
+- **Type Scale**: Use consistent spacing and sizing ratios
+- **Hierarchy**: Clear visual hierarchy with proper heading levels
+- **Readability**: Optimal line-height and contrast ratios
+
+### Color System (Radix Colors)
+- **Semantic Colors**: Colors convey meaning and state
+- **Accessibility**: WCAG AA compliant color combinations
+- **Dark/Light Modes**: Automatic theme switching support
+- **Brand Consistency**: CodeStorm Hub brand colors integrated
+- **Functional Colors**: Error, success, warning, and info states
+
+### Component Architecture
+- **Radix UI Primitives**: Unstyled, accessible foundation components
+- **Composition Pattern**: Build complex components from simpler ones
+- **Prop-based API**: Consistent interface patterns across components
+- **Polymorphic Components**: Components adapt to different HTML elements
+- **Compound Components**: Related components work together seamlessly
+
+### Layout & Spacing
+- **Grid Systems**: CSS Grid and Flexbox for complex layouts
+- **Container Queries**: Responsive components based on container size
+- **Spacing Scale**: Consistent spacing using Tailwind's spacing system
+- **Breakpoint Strategy**: Mobile-first responsive design
+- **Content-First**: Layout serves content, not vice versa
+
+### Accessibility Standards
+- **WCAG 2.1 AA**: Minimum accessibility compliance
+- **Keyboard Navigation**: Full keyboard accessibility
+- **Screen Reader**: Proper ARIA labels and semantic HTML
+- **Focus Management**: Clear focus indicators and logical flow
+- **Color Independence**: Information not conveyed by color alone
+
+### Performance Optimization
+- **Core Web Vitals**: Optimize for LCP, FID, and CLS
+- **Progressive Loading**: Critical content loads first
+- **Image Optimization**: Next.js Image component with proper sizing
+- **Bundle Splitting**: Code splitting at component and route levels
+- **Caching Strategy**: Efficient caching for static and dynamic content
 
 ## Performance Considerations
 - Leverage Next.js built-in optimizations (Image, Link components)

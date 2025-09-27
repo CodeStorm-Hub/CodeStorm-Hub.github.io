@@ -51,24 +51,42 @@
     "language": "typescript",
     "styling": "tailwindcss",
     "ui_library": "radix-ui",
-    "deployment": "vercel"
+    "deployment": "vercel",
+    "design_system": "vercel-inspired",
+    "typography": "geist-font",
+    "color_system": "radix-colors",
+    "accessibility": "wcag-2.1-aa",
+    "performance_target": "core-web-vitals"
   },
   "capabilities": {
     "code_generation": {
       "components": true,
       "pages": true,
       "utilities": true,
-      "types": true
+      "types": true,
+      "design_tokens": true,
+      "animations": true
     },
     "testing": {
       "unit_tests": false,
       "e2e_tests": true,
-      "visual_tests": true
+      "visual_tests": true,
+      "accessibility_tests": true,
+      "performance_tests": true
     },
     "optimization": {
       "bundle_splitting": true,
       "image_optimization": true,
-      "css_optimization": true
+      "css_optimization": true,
+      "core_web_vitals": true,
+      "seo_optimization": true
+    },
+    "design_validation": {
+      "accessibility_checks": true,
+      "responsive_testing": true,
+      "color_contrast": true,
+      "typography_validation": true,
+      "component_documentation": true
     }
   },
   "workflows": {
