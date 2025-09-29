@@ -84,9 +84,11 @@ jobs:
       run: |
         echo "Validating YAML configuration files..."
         
-        # Install yq for YAML validation
-        sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-        sudo chmod +x /usr/local/bin/yq
+        # Install yq for YAML validation (Python version via pip)
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        pip3 install --user yq
+        export PATH="$HOME/.local/bin:$PATH"
         
         # Validate development environment YAML
         if ! yq eval . .copilot/dev-environment.yml > /dev/null; then
