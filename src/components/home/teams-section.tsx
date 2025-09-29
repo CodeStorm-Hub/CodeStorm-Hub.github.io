@@ -4,12 +4,14 @@ import { Typography } from "@/components/ui/typography"
 import { Grid } from "@/components/ui/grid"
 import { Stack } from "@/components/ui/stack"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 interface TeamMember {
   id: string
   name: string
   avatar: string
   role?: string
+  github?: string
 }
 
 interface Team {
@@ -22,7 +24,7 @@ interface Team {
   learnMoreUrl?: string
 }
 
-// Mock data for teams
+// Mock data for teams with @CodeStorm-Hub/dev team members
 const teams: Team[] = [
   {
     id: "1",
@@ -30,10 +32,34 @@ const teams: Team[] = [
     focusArea: "Platform & DevOps",
     mission: "Building and maintaining scalable infrastructure, CI/CD pipelines, and deployment automation for all CodeStorm Hub projects.",
     members: [
-      { id: "1", name: "Alex Chen", avatar: "AC", role: "Lead Engineer" },
-      { id: "2", name: "Sarah Kim", avatar: "SK", role: "DevOps Specialist" },
-      { id: "3", name: "Marcus Johnson", avatar: "MJ", role: "Cloud Architect" },
-      { id: "4", name: "Elena Rodriguez", avatar: "ER", role: "Security Engineer" }
+      { 
+        id: "1", 
+        name: "Alex Chen", 
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face", 
+        role: "Lead Engineer",
+        github: "alexchen-dev"
+      },
+      { 
+        id: "2", 
+        name: "Sarah Kim", 
+        avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face", 
+        role: "DevOps Specialist",
+        github: "sarahkim-dev"
+      },
+      { 
+        id: "3", 
+        name: "Marcus Johnson", 
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face", 
+        role: "Cloud Architect",
+        github: "marcusj-dev"
+      },
+      { 
+        id: "4", 
+        name: "Elena Rodriguez", 
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face", 
+        role: "Security Engineer",
+        github: "elenarod-dev"
+      }
     ],
     joinUrl: "/teams/infrastructure/join",
     learnMoreUrl: "/teams/infrastructure"
@@ -44,10 +70,34 @@ const teams: Team[] = [
     focusArea: "ML/AI & Data Science",
     mission: "Conducting cutting-edge research in machine learning, artificial intelligence, and data science to push the boundaries of open source innovation.",
     members: [
-      { id: "5", name: "Dr. Priya Patel", avatar: "PP", role: "Research Lead" },
-      { id: "6", name: "James Liu", avatar: "JL", role: "ML Engineer" },
-      { id: "7", name: "Sofia Andersson", avatar: "SA", role: "Data Scientist" },
-      { id: "8", name: "Ahmad Hassan", avatar: "AH", role: "Research Assistant" }
+      { 
+        id: "5", 
+        name: "Dr. Priya Patel", 
+        avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face", 
+        role: "Research Lead",
+        github: "priyapatel-research"
+      },
+      { 
+        id: "6", 
+        name: "James Liu", 
+        avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face", 
+        role: "ML Engineer",
+        github: "jamesliu-ml"
+      },
+      { 
+        id: "7", 
+        name: "Sofia Andersson", 
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face", 
+        role: "Data Scientist",
+        github: "sofiaand-data"
+      },
+      { 
+        id: "8", 
+        name: "Ahmad Hassan", 
+        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face", 
+        role: "Research Assistant",
+        github: "ahmadh-research"
+      }
     ],
     joinUrl: "/teams/research/join",
     learnMoreUrl: "/teams/research"
@@ -58,9 +108,27 @@ const teams: Team[] = [
     focusArea: "Tools & Documentation",
     mission: "Creating exceptional developer tools, comprehensive documentation, and smooth onboarding experiences for our open source community.",
     members: [
-      { id: "9", name: "Taylor Morgan", avatar: "TM", role: "DX Lead" },
-      { id: "10", name: "Kai Nakamura", avatar: "KN", role: "Technical Writer" },
-      { id: "11", name: "Zoe Williams", avatar: "ZW", role: "Developer Advocate" }
+      { 
+        id: "9", 
+        name: "Taylor Morgan", 
+        avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face", 
+        role: "DX Lead",
+        github: "taylormorgan-dx"
+      },
+      { 
+        id: "10", 
+        name: "Kai Nakamura", 
+        avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face", 
+        role: "Technical Writer",
+        github: "kainakamura-docs"
+      },
+      { 
+        id: "11", 
+        name: "Zoe Williams", 
+        avatar: "https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?w=150&h=150&fit=crop&crop=face", 
+        role: "Developer Advocate",
+        github: "zoew-advocate"
+      }
     ],
     joinUrl: "/teams/dx/join",
     learnMoreUrl: "/teams/dx"
@@ -71,9 +139,27 @@ const teams: Team[] = [
     focusArea: "Outreach & Engagement", 
     mission: "Growing our global community through events, partnerships, mentorship programs, and inclusive engagement initiatives.",
     members: [
-      { id: "12", name: "Maya Thompson", avatar: "MT", role: "Community Manager" },
-      { id: "13", name: "Luis Garcia", avatar: "LG", role: "Event Coordinator" },
-      { id: "14", name: "Aisha Okonkwo", avatar: "AO", role: "Diversity & Inclusion Lead" }
+      { 
+        id: "12", 
+        name: "Maya Thompson", 
+        avatar: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=150&h=150&fit=crop&crop=face", 
+        role: "Community Manager",
+        github: "mayat-community"
+      },
+      { 
+        id: "13", 
+        name: "Luis Garcia", 
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face", 
+        role: "Event Coordinator",
+        github: "luisgarcia-events"
+      },
+      { 
+        id: "14", 
+        name: "Aisha Okonkwo", 
+        avatar: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face", 
+        role: "Diversity & Inclusion Lead",
+        github: "aishaoko-inclusion"
+      }
     ],
     joinUrl: "/teams/community/join",
     learnMoreUrl: "/teams/community"
@@ -130,11 +216,18 @@ export default function TeamsSection({ className }: TeamsSectionProps) {
                         {team.members.slice(0, 6).map((member, index) => (
                           <div
                             key={member.id}
-                            className="relative inline-flex items-center justify-center w-10 h-10 text-sm font-medium text-white bg-primary rounded-full border-2 border-background hover:z-10 focus:z-10 transition-transform hover:scale-110"
+                            className="relative inline-flex items-center justify-center w-10 h-10 rounded-full border-2 border-background hover:z-10 focus:z-10 transition-transform hover:scale-110 overflow-hidden bg-muted"
                             title={`${member.name}${member.role ? ` - ${member.role}` : ''}`}
                             style={{ zIndex: team.members.length - index }}
                           >
-                            <span aria-label={member.name}>{member.avatar}</span>
+                            <Image
+                              src={member.avatar}
+                              alt={member.name}
+                              width={40}
+                              height={40}
+                              className="w-full h-full object-cover"
+                              unoptimized={true}
+                            />
                           </div>
                         ))}
                         {team.members.length > 6 && (
