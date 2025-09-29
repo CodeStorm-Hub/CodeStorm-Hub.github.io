@@ -4,8 +4,8 @@ const isGitHubPages = process.env.NODE_ENV === 'production' && process.env.GITHU
 
 const nextConfig: NextConfig = {
   // Only enable export for GitHub Pages production builds
-  ...(isGitHubPages && { output: 'export' }),
-  trailingSlash: true,
+  ...(isGitHubPages && { output: "export" }),
+  trailingSlash: false,
   images: {
     // Only disable optimization for GitHub Pages
     unoptimized: Boolean(isGitHubPages),
@@ -13,8 +13,9 @@ const nextConfig: NextConfig = {
   },
   // GitHub Pages specific configuration
   ...(isGitHubPages && {
-    basePath: '/CodeStorm-Hub.github.io',
-    assetPrefix: '/CodeStorm-Hub.github.io/',
+    output: "export",
+    basePath: process.env.PAGES_BASE_PATH,
+    assetPrefix: "/CodeStorm-Hub.github.io/",
   }),
 };
 

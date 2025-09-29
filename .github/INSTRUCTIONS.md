@@ -8,7 +8,7 @@ CodeStorm Hub is a vibrant community portfolio website built with modern web tec
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS 4
 - **UI Components**: Radix UI primitives
-- **Icons**: Lucide React
+- **Icons**: Radix UI Icons
 - **Deployment**: Vercel
 
 ## Development Environment

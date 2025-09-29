@@ -25,7 +25,7 @@ dev_tools:
     purpose: "Animation library for smooth micro-interactions"
   - name: "radix-ui/react-*"
     purpose: "Accessible primitive components for UI foundation"
-  - name: "lucide-react"
+  - name: "radix-ui/react-icons"
     purpose: "Consistent icon system with proper sizing"
 
 # Browser support for testing UI changes

@@ -10,7 +10,7 @@ CodeStorm Hub is a modern portfolio website showcasing open source community pro
 - **Language**: TypeScript with strict mode enabled
 - **Styling**: Tailwind CSS 4 with utility-first approach
 - **UI Components**: Radix UI primitives for accessibility
-- **Icons**: Lucide React for consistent iconography
+- **Icons**: Radix UI Icons for consistent iconography
 - **Typography**: Geist Sans and Geist Mono fonts
 - **Colors**: Radix Colors for semantic color usage
 - **Deployment**: Vercel with automatic deployments

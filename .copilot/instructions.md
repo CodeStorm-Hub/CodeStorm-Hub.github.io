@@ -33,7 +33,7 @@ You are working on CodeStorm Hub's portfolio website - a modern Next.js 15 appli
 - **Styling System**: Tailwind CSS 4 with design tokens and utility-first approach
 - **Typography**: Geist Sans and Geist Mono font families for optimal readability
 - **Color System**: Radix Colors for semantic, accessible color palettes
-- **Icons**: Lucide React icons with consistent sizing and styling
+- **Icons**: Radix UI icons with consistent sizing and styling
 - **State Management**: React hooks, Context API, and Zustand for complex state
 - **Animation**: Framer Motion for smooth, purposeful animations
 - **Layout**: CSS Grid and Flexbox with container queries for responsive design
