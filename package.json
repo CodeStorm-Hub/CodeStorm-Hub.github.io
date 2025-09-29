@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "build:github-pages": "NODE_ENV=production GITHUB_ACTIONS=true next build --turbopack",
     "start": "next start",
     "lint": "eslint"
   },

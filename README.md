@@ -11,7 +11,7 @@ This is the official portfolio website built with Next.js, Tailwind CSS, and Rad
 - **Components**: [Radix UI](https://www.radix-ui.com)
 - **Typography**: [Geist Font](https://vercel.com/font)
 - **Language**: TypeScript
-- **Deployment**: Vercel
+- **Deployment**: GitHub Pages (automated via GitHub Actions)
 
 ## Getting Started
 
@@ -50,8 +50,25 @@ This project implements a comprehensive design system based on:
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
+- `npm run build:github-pages` - Build for GitHub Pages deployment
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+
+## Deployment
+
+This project supports two deployment methods:
+
+### GitHub Pages (Recommended)
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
+
+- **Live Site**: [https://codestorm-hub.github.io/CodeStorm-Hub.github.io/](https://codestorm-hub.github.io/CodeStorm-Hub.github.io/)
+- **Deployment**: Automatic via GitHub Actions
+- **Configuration**: See [GitHub Pages Deployment Guide](docs/github-pages-deployment.md)
+
+### Vercel
+Alternative deployment platform with similar capabilities.
+
+- **Configuration**: `vercel.json` included for Vercel deployments
 
 ## Contributing
 
