@@ -73,7 +73,7 @@ jobs:
         echo "Validating JSON configuration files..."
         
         # Validate MCP configuration JSON
-        if ! jq empty .github/copilot-mcp.json; then
+        if ! jq . .github/copilot-mcp.json > /dev/null; then
           echo "❌ Invalid JSON in .github/copilot-mcp.json"
           exit 1
         else
