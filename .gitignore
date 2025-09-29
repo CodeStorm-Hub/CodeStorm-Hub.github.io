@@ -15,8 +15,8 @@
 
 # next.js
 /.next/
-# The `out` directory should not be ignored by version control
-# /out/
+# The `out` directory contains build artifacts and should not be committed
+/out/
 
 # production
 /build
