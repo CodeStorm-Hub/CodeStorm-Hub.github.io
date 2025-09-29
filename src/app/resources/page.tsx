@@ -107,7 +107,7 @@ const resourceCategories = [
         title: "Git Handbook", 
         description: "Learn Git version control from the basics",
         type: "Tutorial",
-        url: "https://guides.github.com/introduction/git-handbook/",
+        url: "https://docs.github.com/en/get-started/using-git/about-git",
         internal: false,
       },
       {
