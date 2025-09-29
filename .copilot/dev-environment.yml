@@ -1,0 +1,97 @@
+# Development Environment Configuration for GitHub Copilot Coding Agent
+# This file customizes the development environment for better assistance
+
+name: codestorm-hub-development
+
+# Pre-install commonly used tools and dependencies
+preinstall:
+  # Node.js and npm are typically pre-installed, but we can specify versions
+  - node: ">=18.0.0"
+  - npm: ">=9.0.0"
+  
+# Development dependencies that should be available
+dev_tools:
+  - name: "typescript"
+    purpose: "TypeScript language support with strict type checking"
+  - name: "eslint"
+    purpose: "Code linting with accessibility and React best practices"
+  - name: "@types/node"
+    purpose: "Node.js type definitions for server-side functionality"
+  - name: "@types/react"
+    purpose: "React type definitions with latest features"
+  - name: "storybook"
+    purpose: "Component documentation and design system showcase"
+  - name: "framer-motion"
+    purpose: "Animation library for smooth micro-interactions"
+  - name: "radix-ui/react-*"
+    purpose: "Accessible primitive components for UI foundation"
+  - name: "lucide-react"
+    purpose: "Consistent icon system with proper sizing"
+
+# Browser support for testing UI changes
+browser:
+  - chrome
+  - firefox
+
+# VS Code extensions that complement this project
+recommended_extensions:
+  - "bradlc.vscode-tailwindcss"
+  - "ms-vscode.vscode-typescript-next"
+  - "esbenp.prettier-vscode"
+  - "ms-vscode.vscode-json"
+  - "github.copilot"
+  - "github.copilot-chat"
+  - "formulahendry.auto-rename-tag"
+  - "christian-kohler.path-intellisense"
+  - "ms-vscode.vscode-eslint"
+  - "bradlc.vscode-tailwindcss"
+  - "storybook.storybook-vscode"
+  - "radix-ui.radix-ui-vscode"
+
+# Environment variables commonly used in development
+env_vars:
+  - name: "NODE_ENV"
+    default: "development"
+    description: "Node.js environment"
+  - name: "NEXT_TELEMETRY_DISABLED"
+    default: "1"
+    description: "Disable Next.js telemetry for privacy"
+
+# Common development tasks
+tasks:
+  - name: "dev"
+    command: "npm run dev"
+    description: "Start development server with hot reload"
+  - name: "build"
+    command: "npm run build"
+    description: "Build for production"
+  - name: "lint"
+    command: "npm run lint"
+    description: "Run ESLint for code quality checks"
+  - name: "type-check"
+    command: "npx tsc --noEmit"
+    description: "Check TypeScript types without emitting files"
+
+# Port configuration for development server
+ports:
+  - port: 3000
+    description: "Next.js development server"
+    expose: true
+
+# File watchers for automatic rebuilds
+watchers:
+  - pattern: "src/**/*.{ts,tsx,js,jsx}"
+    action: "Hot reload React components"
+  - pattern: "src/**/*.css"
+    action: "Rebuild styles"
+  - pattern: "tailwind.config.*"
+    action: "Rebuild Tailwind CSS"
+
+# Performance optimizations
+optimizations:
+  - name: "turbopack"
+    enabled: true
+    description: "Use Turbopack for faster builds"
+  - name: "incremental_compilation"
+    enabled: true
+    description: "Enable incremental TypeScript compilation"
