@@ -32,7 +32,7 @@ export function LiveRegion({
 
 // Hook for announcing messages to screen readers
 export function useAnnouncement() {
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
   const announce = (message: string, priority: 'polite' | 'assertive' = 'polite') => {
     // Clear any existing timeout
