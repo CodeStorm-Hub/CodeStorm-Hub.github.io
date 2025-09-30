@@ -1,0 +1,158 @@
+name: Copilot Configuration Validation
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+    paths:
+      - '.github/copilot-instructions.md'
+      - '.copilot/**'
+      - '.github/copilot-mcp.json'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '.github/copilot-instructions.md'
+      - '.copilot/**'
+      - '.github/copilot-mcp.json'
+
+jobs:
+  validate-copilot-config:
+    runs-on: ubuntu-latest
+    name: Validate Copilot Configuration
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Validate configuration files exist
+      run: |
+        echo "Checking for required Copilot configuration files..."
+        
+        # Check for repository instructions
+        if [ ! -f ".github/copilot-instructions.md" ]; then
+          echo "❌ Missing .github/copilot-instructions.md"
+          exit 1
+        else
+          echo "✅ Found .github/copilot-instructions.md"
+        fi
+        
+        # Check for custom instructions
+        if [ ! -f ".copilot/instructions.md" ]; then
+          echo "❌ Missing .copilot/instructions.md"
+          exit 1
+        else
+          echo "✅ Found .copilot/instructions.md"
+        fi
+        
+        # Check for development environment config
+        if [ ! -f ".copilot/dev-environment.yml" ]; then
+          echo "❌ Missing .copilot/dev-environment.yml"
+          exit 1
+        else
+          echo "✅ Found .copilot/dev-environment.yml"
+        fi
+        
+        # Check for MCP configuration
+        if [ ! -f ".github/copilot-mcp.json" ]; then
+          echo "❌ Missing .github/copilot-mcp.json"
+          exit 1
+        else
+          echo "✅ Found .github/copilot-mcp.json"
+        fi
+
+    - name: Validate JSON configuration files
+      run: |
+        echo "Validating JSON configuration files..."
+        
+        # Validate MCP configuration JSON
+        if ! jq . .github/copilot-mcp.json > /dev/null; then
+          echo "❌ Invalid JSON in .github/copilot-mcp.json"
+          exit 1
+        else
+          echo "✅ Valid JSON in .github/copilot-mcp.json"
+        fi
+
+    - name: Validate YAML configuration files
+      run: |
+        echo "Validating YAML configuration files..."
+        
+        # Install yq for YAML validation (Python version via pip)
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        pip3 install --user yq
+        export PATH="$HOME/.local/bin:$PATH"
+        
+        # Validate development environment YAML
+        if ! yq eval . .copilot/dev-environment.yml > /dev/null; then
+          echo "❌ Invalid YAML in .copilot/dev-environment.yml"
+          exit 1
+        else
+          echo "✅ Valid YAML in .copilot/dev-environment.yml"
+        fi
+
+    - name: Validate project still builds
+      run: |
+        echo "Ensuring project builds successfully with current configuration..."
+        npm run build
+
+    - name: Validate linting passes
+      run: |
+        echo "Ensuring linting passes with current configuration..."
+        npm run lint
+
+    - name: Check configuration completeness
+      run: |
+        echo "Checking configuration completeness..."
+        
+        # Check if copilot-instructions.md contains required sections
+        if ! grep -q "## Project Overview" .github/copilot-instructions.md; then
+          echo "❌ Missing Project Overview section in copilot-instructions.md"
+          exit 1
+        fi
+        
+        if ! grep -q "Technology Stack" .github/copilot-instructions.md; then
+          echo "❌ Missing Technology Stack section in copilot-instructions.md"
+          exit 1
+        fi
+        
+        if ! grep -q "Development Guidelines" .github/copilot-instructions.md; then
+          echo "❌ Missing Development Guidelines section in copilot-instructions.md"
+          exit 1
+        fi
+        
+        # Check if custom instructions contain key principles
+        if ! grep -q "Design Engineering Principles" .copilot/instructions.md; then
+          echo "❌ Missing Design Engineering Principles in .copilot/instructions.md"
+          exit 1
+        fi
+        
+        if ! grep -q "Technology Preferences" .copilot/instructions.md; then
+          echo "❌ Missing Technology Preferences in .copilot/instructions.md"
+          exit 1
+        fi
+        
+        # Check if MCP config has required structure
+        if ! jq -e '.mcp.servers' .github/copilot-mcp.json > /dev/null; then
+          echo "❌ Missing MCP servers configuration"
+          exit 1
+        fi
+        
+        if ! jq -e '.context' .github/copilot-mcp.json > /dev/null; then
+          echo "❌ Missing context configuration in MCP"
+          exit 1
+        fi
+        
+        echo "✅ All configuration completeness checks passed"
+
+    - name: Report validation success
+      run: |
+        echo "🎉 All Copilot configuration validation checks passed!"
+        echo "The repository is properly configured for GitHub Copilot coding agent."
