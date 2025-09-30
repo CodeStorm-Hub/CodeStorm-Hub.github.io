@@ -7,8 +7,8 @@ This is the official portfolio website built with Next.js, Tailwind CSS, and Rad
 ## Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org) with App Router
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
-- **Components**: [Radix UI](https://www.radix-ui.com)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com) and [Radix Colors](https://www.radix-ui.com/colors)
+- **Components**: [Radix UI](https://www.radix-ui.com) and [Radix Icons](https://www.radix-ui.com/icons)
 - **Typography**: [Geist Font](https://vercel.com/font)
 - **Language**: TypeScript
 - **Deployment**: GitHub Pages (automated via GitHub Actions)
@@ -84,7 +84,7 @@ This project supports two deployment methods:
 ### GitHub Pages (Recommended)
 The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
 
-- **Live Site**: [https://codestorm-hub.github.io](https://codestorm-hub.github.io)
+- **Live Site**: [codestorm-hub.github.io](https://codestorm-hub.github.io)
 - **Deployment**: Automatic via GitHub Actions
 - **Configuration**: See [GitHub Pages Deployment Guide](docs/github-pages-deployment.md)
 
