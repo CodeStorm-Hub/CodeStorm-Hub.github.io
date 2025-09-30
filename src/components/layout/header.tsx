@@ -56,7 +56,11 @@ export function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link 
+            href="/" 
+            className="flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md"
+            aria-label="CodeStorm Hub - Return to homepage"
+          >
             <Logo size="sm" />
           </Link>
 
@@ -80,22 +84,34 @@ export function Header() {
             {/* Community Dropdown */}
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
-                <Button variant="ghost" size="sm" className="h-10 text-sm font-medium text-foreground/60 hover:text-foreground">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="h-10 text-sm font-medium text-foreground/60 hover:text-foreground"
+                  aria-label="Community menu"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Community
-                  <ChevronDownIcon className="ml-1 h-3 w-3" />
+                  <ChevronDownIcon className="ml-1 h-3 w-3" aria-hidden="true" />
                 </Button>
               </DropdownMenu.Trigger>
               <DropdownMenu.Portal>
-                <DropdownMenu.Content className="min-w-[200px] bg-popover border border-border rounded-md shadow-md p-1" sideOffset={5}>
+                <DropdownMenu.Content 
+                  className="min-w-[200px] bg-popover border border-border rounded-md shadow-md p-1" 
+                  sideOffset={5}
+                  aria-label="Community submenu"
+                >
                   {navigationItems.community.map((item) => (
                     <DropdownMenu.Item key={item.href} asChild>
                       <Link
                         href={item.href}
-                        className={`flex items-center px-3 py-2 text-sm rounded-sm cursor-default focus:outline-none transition-colors ${
+                        className={`flex items-center px-3 py-2 text-sm rounded-sm cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors ${
                           isActivePath(item.href)
                             ? "bg-accent text-accent-foreground"
                             : "text-popover-foreground hover:bg-accent hover:text-accent-foreground"
                         }`}
+                        role="menuitem"
                       >
                         {item.label}
                       </Link>
@@ -108,22 +124,34 @@ export function Header() {
             {/* Resources Dropdown */}
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
-                <Button variant="ghost" size="sm" className="h-10 text-sm font-medium text-foreground/60 hover:text-foreground">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="h-10 text-sm font-medium text-foreground/60 hover:text-foreground"
+                  aria-label="Resources menu"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Resources
-                  <ChevronDownIcon className="ml-1 h-3 w-3" />
+                  <ChevronDownIcon className="ml-1 h-3 w-3" aria-hidden="true" />
                 </Button>
               </DropdownMenu.Trigger>
               <DropdownMenu.Portal>
-                <DropdownMenu.Content className="min-w-[200px] bg-popover border border-border rounded-md shadow-md p-1" sideOffset={5}>
+                <DropdownMenu.Content 
+                  className="min-w-[200px] bg-popover border border-border rounded-md shadow-md p-1" 
+                  sideOffset={5}
+                  aria-label="Resources submenu"
+                >
                   {navigationItems.resources.map((item) => (
                     <DropdownMenu.Item key={item.href} asChild>
                       <Link
                         href={item.href}
-                        className={`flex items-center px-3 py-2 text-sm rounded-sm cursor-default focus:outline-none transition-colors ${
+                        className={`flex items-center px-3 py-2 text-sm rounded-sm cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors ${
                           isActivePath(item.href)
                             ? "bg-accent text-accent-foreground"
                             : "text-popover-foreground hover:bg-accent hover:text-accent-foreground"
                         }`}
+                        role="menuitem"
                       >
                         {item.label}
                       </Link>
@@ -137,13 +165,27 @@ export function Header() {
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-2">
             <ThemeToggle />
-            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
-              <Link href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener noreferrer">
-                <GitHubLogoIcon className="h-4 w-4 mr-2" />
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              asChild 
+              className="hidden sm:flex focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Link 
+                href="https://github.com/CodeStorm-Hub" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Visit CodeStorm Hub GitHub repository (opens in new tab)"
+              >
+                <GitHubLogoIcon className="h-4 w-4 mr-2" aria-hidden="true" />
                 GitHub
               </Link>
             </Button>
-            <Button size="sm" className="hidden sm:inline-flex">
+            <Button 
+              size="sm" 
+              className="hidden sm:inline-flex"
+              aria-label="Join the CodeStorm Hub community"
+            >
               Join Us
             </Button>
             
@@ -155,12 +197,12 @@ export function Header() {
               onClick={toggleMobileMenu}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
-              aria-label="Toggle navigation menu"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {isMobileMenuOpen ? (
-                <Cross1Icon className="h-4 w-4" />
+                <Cross1Icon className="h-4 w-4" aria-hidden="true" />
               ) : (
-                <HamburgerMenuIcon className="h-4 w-4" />
+                <HamburgerMenuIcon className="h-4 w-4" aria-hidden="true" />
               )}
             </Button>
           </div>
@@ -168,16 +210,21 @@ export function Header() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div id="mobile-menu" className="lg:hidden border-t border-border">
+          <nav 
+            id="mobile-menu" 
+            className="lg:hidden border-t border-border"
+            aria-label="Mobile navigation"
+          >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Main Navigation */}
-              <div className="space-y-1">
+              <div className="space-y-1" role="group" aria-labelledby="mobile-main-nav">
+                <h3 id="mobile-main-nav" className="sr-only">Main navigation</h3>
                 {navigationItems.main.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                       isActivePath(item.href)
                         ? "text-foreground bg-accent"
                         : "text-foreground/60 hover:text-foreground hover:bg-accent/50"
@@ -189,16 +236,19 @@ export function Header() {
               </div>
 
               {/* Community Section */}
-              <div className="pt-4">
-                <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <div className="pt-4" role="group" aria-labelledby="mobile-community-nav">
+                <h3 
+                  id="mobile-community-nav" 
+                  className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                >
                   Community
-                </div>
+                </h3>
                 {navigationItems.community.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                       isActivePath(item.href)
                         ? "text-foreground bg-accent"
                         : "text-foreground/60 hover:text-foreground hover:bg-accent/50"
@@ -210,16 +260,19 @@ export function Header() {
               </div>
 
               {/* Resources Section */}
-              <div className="pt-4">
-                <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <div className="pt-4" role="group" aria-labelledby="mobile-resources-nav">
+                <h3 
+                  id="mobile-resources-nav" 
+                  className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                >
                   Resources
-                </div>
+                </h3>
                 {navigationItems.resources.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                       isActivePath(item.href)
                         ? "text-foreground bg-accent"
                         : "text-foreground/60 hover:text-foreground hover:bg-accent/50"
@@ -231,27 +284,45 @@ export function Header() {
               </div>
 
               {/* Mobile CTA Buttons */}
-              <div className="pt-4 space-y-2">
-                <Button asChild className="w-full justify-center">
-                  <Link href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener noreferrer">
-                    <GitHubLogoIcon className="h-4 w-4 mr-2" />
+              <div className="pt-4 space-y-2" role="group" aria-label="Call to action buttons">
+                <Button 
+                  asChild 
+                  className="w-full justify-center focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <Link 
+                    href="https://github.com/CodeStorm-Hub" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="View CodeStorm Hub on GitHub (opens in new tab)"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <GitHubLogoIcon className="h-4 w-4 mr-2" aria-hidden="true" />
                     View on GitHub
                   </Link>
                 </Button>
-                <Button variant="outline" className="w-full justify-center">
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-center"
+                  aria-label="Join the CodeStorm Hub community"
+                >
                   Join Community
                 </Button>
               </div>
 
               {/* Legal Links */}
-              <div className="pt-4 border-t border-border">
+              <div 
+                className="pt-4 border-t border-border" 
+                role="group" 
+                aria-labelledby="mobile-legal-nav"
+              >
+                <h3 id="mobile-legal-nav" className="sr-only">Legal and policy links</h3>
                 <div className="flex flex-wrap gap-4 px-3 py-2">
                   {navigationItems.legal.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
                       {item.label}
                     </Link>
@@ -259,7 +330,7 @@ export function Header() {
                 </div>
               </div>
             </div>
-          </div>
+          </nav>
         )}
       </Container>
     </header>
