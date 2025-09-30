@@ -84,7 +84,7 @@ This project supports two deployment methods:
 ### GitHub Pages (Recommended)
 The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
 
-- **Live Site**: [https://codestorm-hub.github.io/CodeStorm-Hub.github.io/](https://codestorm-hub.github.io/CodeStorm-Hub.github.io/)
+- **Live Site**: [https://codestorm-hub.github.io](https://codestorm-hub.github.io)
 - **Deployment**: Automatic via GitHub Actions
 - **Configuration**: See [GitHub Pages Deployment Guide](docs/github-pages-deployment.md)
 
