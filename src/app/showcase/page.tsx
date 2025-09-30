@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Container } from "@/components/ui/container"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -385,9 +386,9 @@ export default function ShowcasePage() {
                 </a>
               </Button>
               <Button variant="outline" asChild>
-                <a href="/projects">
+                <Link href="/projects">
                   View All Projects
-                </a>
+                </Link>
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
