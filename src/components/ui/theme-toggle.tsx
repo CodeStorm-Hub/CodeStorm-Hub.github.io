@@ -6,7 +6,21 @@ import { Button } from '@/components/ui/button'
 import { useTheme } from '@/hooks/use-theme'
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme, mounted } = useTheme()
+
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="sm"
+        aria-label="Toggle theme"
+        className="h-9 w-9 px-0"
+        disabled
+      >
+        <SunIcon className="h-4 w-4" />
+      </Button>
+    )
+  }
 
   return (
     <Button
