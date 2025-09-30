@@ -1,3 +1,7 @@
+# GitHub Copilot Custom Instructions (archival)
+
+> DEPRECATED: The canonical Copilot agent instructions for this repository live at `.github/copilot-instructions.md`. Update that file if you need to change agent guidance. This file is retained for historical/contextual reference only.
+
 # GitHub Copilot Custom Instructions
 
 ## Project Context

@@ -1,5 +1,7 @@
 # GitHub Copilot Configuration Setup
 
+> NOTE: `.github/copilot-instructions.md` is the canonical location for Copilot agent guidance in this repository. Keep that file short and actionable; use `.copilot/` for environment configuration only (e.g., `dev-environment.yml`).
+
 This repository has been configured with comprehensive GitHub Copilot instructions to provide the best possible AI-assisted development experience.
 
 ## Configuration Files
