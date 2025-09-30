@@ -1,0 +1,81 @@
+{
+        "team": [
+          {
+            "name": "Syed Salman Reza",
+            "role": "Senior Software Engineer and Lead Developer",
+            "bio": "Experienced software engineer specializing in modern web technologies and scalable system architecture.",
+            "image": "/syed-salman-reza.jpg",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "twitter": "#"
+            }
+          },
+          {
+            "name": "Rafiqul Islam Susmoy",
+            "role": "Software Engineer",
+            "bio": "Passionate software engineer with expertise in full-stack development and problem-solving.",
+            "image": "/rafiqul-islam-susmoy.jpg",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "twitter": "#"
+            }
+          },
+          {
+            "name": "Azizul Hakim Akash",
+            "role": "Software Engineer",
+            "bio": "Dedicated software engineer with a strong foundation in modern web technologies and a passion for creating efficient, scalable solutions.",
+            "image": "/azizul-hakim-akash.jpg",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "twitter": "#"
+            }
+          },
+          {
+            "name": "Maruf Mustal Moon",
+            "role": "DevOps Expert",
+            "bio": "As a DevOps / Platform Engineer, I help bridge the gap between development and operations, designing and maintaining infrastructure, automating pipelines, and ensuring scalable, reliable deployment of applications.",
+            "image": "/maruf-mustal-moon.jpg",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "twitter": "#"
+            }
+          },
+          {
+            "name": "Afsan Khan",
+            "role": "AI/ML Expert",
+            "bio": "Artificial Intelligence and Machine Learning specialist with expertise in developing intelligent systems, neural networks, and data-driven solutions.",
+            "image": "/afsan-khan.jpg",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "twitter": "#"
+            }
+          },
+          {
+            "name": "Neamul Islam Razib",
+            "role": "Software Engineer",
+            "bio": "Skilled software engineer with expertise in modern development practices and creating robust, scalable applications.",
+            "image": "/8e3f17f0-6465-4554-a6a9-9685b1b71045.jpg",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "twitter": "#"
+            }
+          },
+          {
+            "name": "Md Mehedi Hasan",
+            "role": "Digital Marketing and Business Analysis",
+            "bio": "Digital marketing expert and business analyst specializing in market research, strategy development, and data-driven insights for business growth.",
+            "image": "/28580edf-40b6-4469-a53a-b9b6436eb008.jpg",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "twitter": "#"
+            }
+          }
+        ]
+}
