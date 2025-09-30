@@ -48,11 +48,34 @@ This project implements a comprehensive design system based on:
 
 ## Development
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run build:github-pages` - Build for GitHub Pages deployment
+### Environment Setup
+
+1. Copy the environment example file:
+```bash
+cp .env.example .env.local
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+### Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production (GitHub Pages optimized)
 - `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+- `npm run lint` - Run ESLint with auto-fix
+- `npm run type-check` - Run TypeScript type checking
+- `npm run dev:clean` - Clean build cache and start dev server
+
+### Code Quality
+
+This project enforces strict code quality standards:
+- TypeScript strict mode
+- ESLint with Next.js recommended rules
+- Accessibility compliance (WCAG 2.1 AA)
+- Performance optimization (Core Web Vitals)
 
 ## Deployment
 

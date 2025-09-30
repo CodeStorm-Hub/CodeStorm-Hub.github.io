@@ -16,7 +16,37 @@ const nextConfig: NextConfig = {
         hostname: "github.com",
         pathname: "/CodeStorm-Hub/**",
       },
+      {
+        protocol: "https", 
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com", 
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "ui-avatars.com",
+        pathname: "/**",
+      },
     ],
+  },
+
+  // Performance optimizations
+  poweredByHeader: false,
+
+  // TypeScript configuration
+  typescript: {
+    // Type checking is handled by the CI pipeline
+    ignoreBuildErrors: false,
+  },
+
+  // ESLint configuration
+  eslint: {
+    // Linting is handled by the CI pipeline
+    ignoreDuringBuilds: false,
   },
 };
 
