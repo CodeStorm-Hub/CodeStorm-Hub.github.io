@@ -27,7 +27,18 @@ export function getTeamData(): TeamData {
   try {
     const teamJsonPath = path.join(process.cwd(), 'docs', 'team-members', 'team.json')
     const teamJsonContent = fs.readFileSync(teamJsonPath, 'utf8')
-    cachedTeamData = JSON.parse(teamJsonContent)
+    const rawData = JSON.parse(teamJsonContent)
+    
+    // Fix image paths to ensure they point to the correct location
+    cachedTeamData = {
+      team: rawData.team.map((member: TeamMember) => ({
+        ...member,
+        image: member.image.startsWith('/') 
+          ? `/team-members${member.image}` 
+          : `/team-members/${member.image}`
+      }))
+    }
+    
     return cachedTeamData!
   } catch (error) {
     console.warn('Failed to load team data from docs/team-members/team.json:', error)

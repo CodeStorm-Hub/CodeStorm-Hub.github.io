@@ -39,12 +39,13 @@ export default function TeamPage() {
                   <CardHeader className="pb-4">
                     <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-muted border-2 border-primary/20">
                       <Image
-                        src={member.image.startsWith('/') ? member.image : `/team-members/${member.image}`}
+                        src={member.image}
                         alt={`${member.name} avatar`}
                         width={96}
                         height={96}
                         className="w-full h-full object-cover"
                         unoptimized={true}
+                        priority={index < 3}
                       />
                     </div>
                     <CardTitle className="text-lg">{member.name}</CardTitle>
