@@ -1,5 +1,5 @@
 import React from 'react'
-import { LightningBoltIcon, CubeIcon } from '@radix-ui/react-icons'
+import { LightningBoltIcon, ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
@@ -11,19 +11,22 @@ interface LogoProps {
 const sizeClasses = {
   sm: {
     container: 'h-6',
-    icon: 'h-4 w-4',
+    icon: 'h-3 w-3',
+    lightning: 'h-4 w-4',
     text: 'text-lg font-bold',
-    spacing: 'gap-1.5'
+    spacing: 'gap-2'
   },
   md: {
     container: 'h-8',
-    icon: 'h-5 w-5', 
+    icon: 'h-4 w-4',
+    lightning: 'h-5 w-5', 
     text: 'text-xl font-bold',
-    spacing: 'gap-2'
+    spacing: 'gap-2.5'
   },
   lg: {
     container: 'h-12',
-    icon: 'h-8 w-8',
+    icon: 'h-6 w-6',
+    lightning: 'h-7 w-7',
     text: 'text-3xl font-bold',
     spacing: 'gap-3'
   }
@@ -34,25 +37,30 @@ export function Logo({ className, size = 'md', variant = 'full' }: LogoProps) {
   
   const IconComponent = () => (
     <div className={cn(
-      "relative inline-flex items-center justify-center",
+      "inline-flex items-center justify-center",
       sizes.container,
-      "bg-gradient-to-br from-primary via-primary/80 to-primary/60",
-      "rounded-lg shadow-sm"
+      "relative"
     )}>
-      {/* Lightning bolt as main icon */}
-      <LightningBoltIcon 
+      {/* Left Chevron */}
+      <ChevronLeftIcon 
         className={cn(
           sizes.icon,
-          "text-primary-foreground drop-shadow-sm z-10"
+          "text-primary/60"
         )} 
       />
-      {/* Subtle cube in background for "Hub" concept */}
-      <CubeIcon 
+      {/* Central Lightning Bolt - The main focus */}
+      <LightningBoltIcon 
         className={cn(
-          "absolute top-0 right-0 h-2 w-2",
-          size === 'lg' ? 'h-3 w-3' : 'h-2 w-2',
-          "text-primary-foreground/40"
-        )}
+          sizes.lightning,
+          "text-primary mx-0.5 relative z-10"
+        )} 
+      />
+      {/* Right Chevron */}
+      <ChevronRightIcon 
+        className={cn(
+          sizes.icon,
+          "text-primary/60"
+        )} 
       />
     </div>
   )
