@@ -1,18 +1,14 @@
-# CBRMS - Community-Based Resource Management System
+# CBRMS - Cheque Bureau Requisition Management System
 ## Overview
 
-A comprehensive Community-Based Resource Management System (CBRMS) built with Laravel framework. This system facilitates efficient management of community resources, member coordination, and administrative oversight for community-driven organizations and local governance.
+A comprehensive Cheque Bureau Requisition Management System (CBRMS) built with Laravel framework. This system facilitates efficient management of community resources, member coordination, and administrative oversight for community-driven organizations and local governance.
 
 ## ✨ Key Features
 
-- **Resource Management:** Track and manage community assets, facilities, and equipment
-- **Member Directory:** Comprehensive community member database and profiles  
-- **Event Coordination:** Community event planning, scheduling, and management
-- **Financial Tracking:** Budget management and community fund administration
-- **Communication Hub:** Internal messaging and community announcements
-- **Reporting System:** Generate reports on resource usage and community activities
-- **Role-Based Access:** Multi-level user permissions for different community roles
-- **Document Management:** Store and organize community documents and policies
+- **Resource Management:** Track and manage Cheque requisitions, assets, facilities, and equipment
+- **Branch Directory:** Comprehensive branch profiles
+- **Reporting System:** Generate templates on requisition and printable data
+- **Role-Based Access:** Multi-level user permissions for different community role
 
 ## 🛠️ Technology Stack
 
