@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container"
 import { Typography } from "@/components/ui/typography"
 import { Grid } from "@/components/ui/grid"
 import { Stack } from "@/components/ui/stack"
+import { Logo } from "@/components/ui/logo"
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons"
 import ProjectsSection from "@/components/home/projects-section"
 import TeamMembersSection from "@/components/home/team-members-section"
@@ -17,6 +18,7 @@ export default function Home() {
           <Stack align="center" gap={8} className="text-center">
             {/* Logo/Brand */}
             <Stack gap={4} align="center">
+              <Logo size="lg" variant="icon" className="mb-2" />
               <Typography variant="h1">
                 <span className="text-foreground">Code</span>
                 <span className="text-primary">Storm</span>
