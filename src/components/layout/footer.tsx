@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Container } from "@/components/ui/container"
+import { Logo } from "@/components/ui/logo"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 export function Footer() {
@@ -11,11 +12,7 @@ export function Footer() {
             {/* Brand */}
             <div className="col-span-1 sm:col-span-2 lg:col-span-2">
               <Link href="/" className="flex items-center space-x-2 mb-4">
-                <span className="text-xl font-bold">
-                  <span className="text-foreground">Code</span>
-                  <span className="text-primary">Storm</span>
-                  <span className="text-foreground"> Hub</span>
-                </span>
+                <Logo size="sm" />
               </Link>
               <p className="text-sm text-muted-foreground max-w-md mb-4">
                 A vibrant community of open source enthusiasts, researchers, and creators. 

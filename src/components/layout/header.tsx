@@ -5,6 +5,8 @@ import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
+import { Logo } from "@/components/ui/logo"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { GitHubLogoIcon, HamburgerMenuIcon, Cross1Icon, ChevronDownIcon } from "@radix-ui/react-icons"
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 
@@ -55,11 +57,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold">
-              <span className="text-foreground">Code</span>
-              <span className="text-primary">Storm</span>
-              <span className="text-foreground"> Hub</span>
-            </span>
+            <Logo size="sm" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -138,6 +136,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-2">
+            <ThemeToggle />
             <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
               <Link href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener noreferrer">
                 <GitHubLogoIcon className="h-4 w-4 mr-2" />
