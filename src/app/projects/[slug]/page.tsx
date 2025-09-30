@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { GitHubLogoIcon, ExternalLinkIcon, StarIcon, CopyIcon, CalendarIcon, PersonIcon } from "@radix-ui/react-icons"
+import { GitHubLogoIcon, ExternalLinkIcon, StarIcon, CopyIcon, CalendarIcon, PersonIcon, CheckCircledIcon, ArchiveIcon, UpdateIcon, ReloadIcon, ComponentInstanceIcon, GlobeIcon, LockClosedIcon, StarFilledIcon } from "@radix-ui/react-icons"
 import { getAllProjects, getProjectBySlug } from "@/lib/project-data"
 import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
@@ -51,16 +51,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   const getStatusBadge = (status: string | undefined) => {
     const statusConfig = {
-      'Active': { emoji: '✅', color: 'bg-green-100 text-green-800 border-green-200' },
-      'Archived': { emoji: '📦', color: 'bg-gray-100 text-gray-800 border-gray-200' },
-      'Maintenance': { emoji: '🚧', color: 'bg-yellow-100 text-yellow-800 border-yellow-200' },
-      'In Development': { emoji: '🔄', color: 'bg-blue-100 text-blue-800 border-blue-200' },
-      'Under Construction': { emoji: '🏗️', color: 'bg-orange-100 text-orange-800 border-orange-200' },
+      'Active': { icon: CheckCircledIcon, color: 'bg-green-100 text-green-800 border-green-200' },
+      'Archived': { icon: ArchiveIcon, color: 'bg-gray-100 text-gray-800 border-gray-200' },
+      'Maintenance': { icon: UpdateIcon, color: 'bg-yellow-100 text-yellow-800 border-yellow-200' },
+      'In Development': { icon: ReloadIcon, color: 'bg-blue-100 text-blue-800 border-blue-200' },
+      'Under Construction': { icon: ComponentInstanceIcon, color: 'bg-orange-100 text-orange-800 border-orange-200' },
     }
     const config = statusConfig[status as keyof typeof statusConfig] || statusConfig['Active']
+    const Icon = config.icon
     return (
       <Badge variant="outline" className={`${config.color} text-sm font-medium`}>
-        <span className="mr-2">{config.emoji}</span>
+        <Icon className="mr-2 h-4 w-4" />
         {status}
       </Badge>
     )
@@ -119,7 +120,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         ? 'bg-green-50 text-green-700 border-green-200' 
                         : 'bg-gray-50 text-gray-700 border-gray-200'
                     }`}>
-                      {project.visibility === 'Public' ? '🌐' : '🔐'} {project.visibility}
+                      {project.visibility === 'Public' ? (
+                        <GlobeIcon className="mr-2 h-4 w-4" />
+                      ) : (
+                        <LockClosedIcon className="mr-2 h-4 w-4" />
+                      )}
+                      {project.visibility}
                     </Badge>
                   )}
                 </div>
@@ -186,7 +192,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               {project.keyFeatures && project.keyFeatures.length > 0 && (
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-xl">✨ Key Features</CardTitle>
+                    <CardTitle className="text-xl flex items-center gap-2">
+                      <StarFilledIcon className="h-5 w-5 text-yellow-500" />
+                      Key Features
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-3">
