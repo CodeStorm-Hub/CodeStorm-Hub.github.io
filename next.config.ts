@@ -42,12 +42,8 @@ const nextConfig: NextConfig = {
     // Type checking is handled by the CI pipeline
     ignoreBuildErrors: false,
   },
-
-  // ESLint configuration
-  eslint: {
-    // Linting is handled by the CI pipeline
-    ignoreDuringBuilds: false,
-  },
+  // Note: `eslint` config was removed from next.config per Next.js 16 migration
+  // Move ESLint settings to a dedicated ESLint config file (e.g. .eslintrc.json)
 };
 
 export default nextConfig;
