@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CodeStorm Hub — Visiting Card (Printable)</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Print-ready business card template
+       Trim: 3.5in x 2in (88.9 x 50.8 mm)
+       Bleed: 0.125in (3 mm) each side -> artboard 3.75 x 2.25in if exporting with bleed
+       Keep important text inside safe area: 0.125in (3 mm) from trim
+    */
+
+    :root{
+      --csbg: #0f1724;
+      --cslight: #ffffff;
+      --csmuted: #94a3b8;
+      --trim-width: 3.5in;
+      --trim-height: 2in;
+      --bleed: 0.125in;
+    }
+
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{display:flex;align-items:center;justify-content:center;padding:20px;background:#f3f4f6}
+
+    /* Canvas that matches the final trimmed size for previewing/printing without bleed */
+    .card-frame{width:var(--trim-width);height:var(--trim-height);position:relative;box-shadow:0 10px 30px rgba(2,6,23,0.25);border-radius:8px;overflow:hidden}
+
+    /* Background variants */
+    .card-dark{background:var(--csbg);color:var(--cslight)}
+    .card-light{background:#ffffff;color:#0f1724}
+
+    .card-inner{display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:10px}
+
+    .brand{display:flex;align-items:center;gap:10px}
+     /* Logo background: use the site accent with a subtle dark falloff to match the portfolio Logo component
+       kept as a gradient so printed previews remain consistent with brand colors */
+    .logo-wrap{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#0f1724;box-shadow:0 2px 8px rgba(0,0,0,0.25)}
+    .cs-logo{display:flex;align-items:center;justify-content:center;gap:0px;color:var(--cslight);}
+    .cs-logo svg{width:16px;height:16px;display:block;fill:currentColor}
+    .cs-logo svg.chev{opacity:0.65}
+    .cs-logo svg.lightning{opacity:1}
+
+    .brand h1{font-size:14px;margin:0;font-weight:700;letter-spacing:0.2px}
+    .tag{font-size:10px;color:var(--csmuted);margin-top:2px;font-family:monospace}
+
+    .person{font-weight:700;font-size:15px}
+    .role{font-size:11px;color:var(--csmuted);margin-top:2px}
+
+    .contacts{font-size:10px;color:var(--csmuted);display:flex;flex-direction:column;gap:6px}
+    .contacts .row{display:flex;gap:6px;align-items:center}
+    .icon{width:12px;height:12px;flex:0 0 12px;display:inline-block}
+
+    /* Small helper for QR/image */
+    .qr{width:44px;height:44px;border-radius:6px;background:#fff;padding:4px;display:flex;align-items:center;justify-content:center}
+    .contacts a{color:inherit;text-decoration:none}
+    .contacts a:hover{text-decoration:underline}
+
+    /* Print rules to request exact color reproduction */
+    .card-frame, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+    @media print{
+      body{background:transparent}
+      .card-frame{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="card-frame card-dark" role="region" aria-label="CodeStorm Hub business card">
+    <div class="card-inner">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div class="brand">
+          <div class="logo-wrap" aria-hidden>
+            <!-- Use portfolio logo built from chevrons + lightning icon (inlined so it inherits currentColor) -->
+            <div class="cs-logo" aria-hidden>
+              <svg class="chev" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.21192 3.09155C8.40164 2.95736 8.66555 2.96958 8.8418 3.13452C9.01806 3.29976 9.04853 3.56338 8.92676 3.76148L8.86524 3.84155L5.43555 7.49976L8.86524 11.158L8.92676 11.238C9.04853 11.4361 9.01806 11.6998 8.8418 11.865C8.66555 12.0299 8.40164 12.0422 8.21192 11.908L8.13477 11.8416L4.38477 7.84155C4.20487 7.64932 4.20487 7.35019 4.38477 7.15796L8.13477 3.15796L8.21192 3.09155Z"/></svg>
+              <svg class="lightning" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.15623 0.136828C8.29885 0.0017736 8.5108 -0.038992 8.69627 0.0401498C8.90813 0.130807 9.03093 0.354826 8.99314 0.582135L8.08983 6.00004H12.4999C12.6893 6.00004 12.8625 6.10703 12.9472 6.2764C13.0318 6.44567 13.0137 6.64836 12.9003 6.79983L6.90039 14.7997C6.76218 14.984 6.51554 15.0503 6.30372 14.9599C6.09185 14.8692 5.96904 14.6452 6.00685 14.4179L6.91016 9H2.50005C2.31067 9 2.13749 8.89303 2.05279 8.72364C1.96818 8.55437 1.98625 8.35167 2.09967 8.20021L8.09959 0.200304L8.15623 0.136828ZM3.50004 8.00001H7.49999C7.64696 8.00001 7.78682 8.06464 7.88182 8.17677C7.9767 8.28885 8.01724 8.43718 7.99315 8.58204L7.33007 12.5586L11.4999 7.00003H7.49999C7.35302 7.00003 7.21316 6.93541 7.11816 6.82327C7.02329 6.71118 6.98274 6.56286 7.00683 6.418L7.66894 2.44051L3.50004 8.00001Z"/></svg>
+              <svg class="chev" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.15879 11.8651C6.36026 12.0536 6.67706 12.043 6.86582 11.8416L10.6158 7.84162C10.7957 7.64939 10.7957 7.35026 10.6158 7.15803L6.86582 3.15803L6.78868 3.09162C6.59895 2.95743 6.33504 2.96965 6.15879 3.13459C5.98254 3.29983 5.95206 3.56345 6.07383 3.76155L6.13535 3.84162L9.56407 7.49983L6.13535 11.158C5.94681 11.3595 5.95745 11.6763 6.15879 11.8651Z"/></svg>
+            </div>
+          </div>
+          <div>
+            <h1>CodeStorm Hub</h1>
+            <div class="tag">Open Source Collective</div>
+          </div>
+        </div>
+
+        <div class="qr" title="Scan to open CodeStorm Hub">
+          <!-- Conservative branded QR design: underlying PNG ensures scannability; overlays are decorative only -->
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code to codestorm-hub.github.io">
+            <defs>
+              <clipPath id="qr-round"><rect width="44" height="44" rx="6" ry="6"/></clipPath>
+              <!-- simplified: no gradients or shadow filters to preserve QR scannability and print consistency -->
+            </defs>
+
+            <!-- underlying raster QR (keeps scannability). Use higher source resolution for better print quality. -->
+            <a href="https://codestorm-hub.github.io" target="_blank" rel="noreferrer">
+              <g clip-path="url(#qr-round)">
+                <!-- High-res raster QR only; avoid overlays that could reduce scannability -->
+                <image href="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://codestorm-hub.github.io&color=000000&bgcolor=ffffff" x="0" y="0" width="44" height="44" preserveAspectRatio="xMidYMid slice" />
+              </g>
+            </a>
+
+            <!-- decorative rounded corner badges positioned outside the quiet zone where possible (solid, no effects) -->
+            <rect x="3" y="3" width="6" height="6" rx="1.5" fill="#0f1724" opacity="0.85" />
+            <rect x="35" y="3" width="6" height="6" rx="1.5" fill="#0f1724" opacity="0.85" />
+            <rect x="3" y="35" width="6" height="6" rx="1.5" fill="#0f1724" opacity="0.85" />
+
+            <!-- accent ring around the top-left finder (outline only, thin stroke) -->
+            <rect x="1.6" y="1.6" width="10.8" height="10.8" rx="2" fill="none" stroke="#0f1724" stroke-width="1.2" opacity="0.9"/>
+
+            <!-- central logo badge removed to keep QR fully scannable; keeping raster QR only -->
+
+            <!-- Note: link moved to wrap the raster QR image for better click targets and accessibility -->
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <div class="person">Syed Salman Reza</div>
+        <div class="role">Senior Software Engineer · Lead Developer</div>
+      </div>
+
+      <div class="contacts">
+        <div class="row">
+          <!-- Email -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13a2.5 2.5 0 0 0 2.5-2.5v-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 7.5l-9 6-9-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="mailto:contact@codestormhub.dev">syed.reza@codestormhub.dev</a>
+        </div>
+
+        <div class="row">
+          <!-- Phone -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.38 1.78.75 2.6a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.48-1.48a2 2 0 0 1 2.11-.45c.82.37 1.7.63 2.6.75A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="tel:+15551234567">+880-1970279556</a>
+        </div>
+
+        <div class="row">
+          <!-- Website -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/><path d="M2 12h20M12 2c2.2 4 2.2 16 0 20M12 2c-2.2 4-2.2 16 0 20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="https://codestorm-hub.github.io" target="_blank" rel="noreferrer">codestorm-hub.github.io</a>
+        </div>
+
+        <div class="row">
+          <!-- Address -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          <span>941, East Monipur, Mirpur 2, Dhaka 1216</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Helpful export notes for printing -->
+  <!--
+    Export instructions:
+    - If exporting to PDF for professional printing: set artboard to include bleed (trim + 0.125in bleed each side).
+      Example: for 3.5 x 2 in trim, export PDF with artboard 3.75 x 2.25 in and centre the trim marks.
+    - Use 300dpi raster assets at final size; keep logo vector (SVG/PDF) when possible.
+    - Convert to CMYK or export with an embedded color profile (PDF/X) per your printer's requirements.
+    - Keep all text at least 3 mm (0.125 in) inside the trim for safety.
+  -->
+</body>
+</html>

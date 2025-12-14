@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CodeStorm Hub — Visiting Card (Print Ready)</title>
+  <style>
+    /* Artboard with bleed: 3.75in x 2.25in (trim 3.5 x 2in centered) */
+    :root{--art-width:3.75in;--art-height:2.25in;--trim-width:3.5in;--trim-height:2in;--bleed:0.125in}
+    html,body{height:100%;margin:0;padding:0;background:transparent}
+    .artboard{width:var(--art-width);height:var(--art-height);position:relative;margin:20px auto;background:#fff}
+
+    /* trim box centered inside artboard */
+    .trim{position:absolute;left:calc((var(--art-width) - var(--trim-width))/2);top:calc((var(--art-height) - var(--trim-height))/2);width:var(--trim-width);height:var(--trim-height);overflow:visible}
+
+    /* small crop marks (outside trim) */
+    .crop{position:absolute;width:0;height:0}
+    .crop:before,.crop:after{content:'';position:absolute;background:#000}
+    /* top-left */
+    .crop.tl{left:calc((var(--art-width) - var(--trim-width))/2 - var(--bleed));top:calc((var(--art-height) - var(--trim-height))/2 - var(--bleed));}
+    .crop.tl:before{width:0.25in;height:0.012in;left:0;top:-0.012in}
+    .crop.tl:after{height:0.25in;width:0.012in;left:-0.012in;top:0}
+    /* top-right */
+    .crop.tr{left:calc((var(--art-width) + var(--trim-width))/2 + var(--bleed) - 0.012in);top:calc((var(--art-height) - var(--trim-height))/2 - var(--bleed));}
+    .crop.tr:before{width:0.25in;height:0.012in;left:-0.25in;top:-0.012in}
+    .crop.tr:after{height:0.25in;width:0.012in;left:0;top:0}
+    /* bottom-left */
+    .crop.bl{left:calc((var(--art-width) - var(--trim-width))/2 - var(--bleed));top:calc((var(--art-height) + var(--trim-height))/2 + var(--bleed) - 0.012in);}
+    .crop.bl:before{width:0.25in;height:0.012in;left:0;top:0}
+    .crop.bl:after{height:0.25in;width:0.012in;left:-0.012in;top:-0.25in}
+    /* bottom-right */
+    .crop.br{left:calc((var(--art-width) + var(--trim-width))/2 + var(--bleed) - 0.012in);top:calc((var(--art-height) + var(--trim-height))/2 + var(--bleed) - 0.012in);}
+    .crop.br:before{width:0.25in;height:0.012in;left:-0.25in;top:0}
+    .crop.br:after{height:0.25in;width:0.012in;left:0;top:-0.25in}
+
+    /* Ensure the inner card scales to the trim size exactly */
+    .card-container{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+    /* --- include card styles inline (trimmed down) --- */
+    .card-frame{width:100%;height:100%;box-shadow:none;border-radius:0;overflow:visible}
+    .card-dark{background:#0f1724;color:#ffffff}
+    .card-inner{display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:12px;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo-wrap{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#0f1724}
+    .cs-logo{display:flex;align-items:center;justify-content:center;gap:0px;color:#fff}
+    .cs-logo svg{width:16px;height:16px;display:block;fill:currentColor}
+    .brand h1{font-size:14px;margin:0;font-weight:700}
+    .tag{font-size:10px;color:#94a3b8;margin-top:2px;font-family:monospace}
+    .person{font-weight:700;font-size:16px}
+    .role{font-size:11px;color:#94a3b8;margin-top:2px}
+    .contacts{font-size:11px;color:#94a3b8;display:flex;flex-direction:column;gap:6px}
+    .contacts .row{display:flex;gap:8px;align-items:center}
+    .qr{width:44px;height:44px;border-radius:6px;background:#fff;padding:4px;display:flex;align-items:center;justify-content:center}
+
+    /* Hide crop marks on screen small previews if desired */
+    @media screen{.crop{opacity:0.9}}
+  </style>
+</head>
+<body>
+  <div class="artboard">
+    <!-- crop marks positioned relative to trim -->
+    <div class="crop tl" aria-hidden></div>
+    <div class="crop tr" aria-hidden></div>
+    <div class="crop bl" aria-hidden></div>
+    <div class="crop br" aria-hidden></div>
+
+    <div class="trim">
+      <div class="card-container">
+        <!-- Inline sanitized card content (trim-sized) -->
+        <div class="card-frame card-dark" role="region" aria-label="CodeStorm Hub business card">
+          <div class="card-inner">
+            <div style="display:flex;justify-content:space-between;align-items:start">
+              <div class="brand">
+                <div class="logo-wrap" aria-hidden>
+                  <div class="cs-logo" aria-hidden>
+                    <svg class="chev" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.21192 3.09155C8.40164 2.95736 8.66555 2.96958 8.8418 3.13452C9.01806 3.29976 9.04853 3.56338 8.92676 3.76148L8.86524 3.84155L5.43555 7.49976L8.86524 11.158L8.92676 11.238C9.04853 11.4361 9.01806 11.6998 8.8418 11.865C8.66555 12.0299 8.40164 12.0422 8.21192 11.908L8.13477 11.8416L4.38477 7.84155C4.20487 7.64932 4.20487 7.35019 4.38477 7.15796L8.13477 3.15796L8.21192 3.09155Z"/></svg>
+                    <svg class="lightning" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.15623 0.136828C8.29885 0.0017736 8.5108 -0.038992 8.69627 0.0401498C8.90813 0.130807 9.03093 0.354826 8.99314 0.582135L8.08983 6.00004H12.4999C12.6893 6.00004 12.8625 6.10703 12.9472 6.2764C13.0318 6.44567 13.0137 6.64836 12.9003 6.79983L6.90039 14.7997C6.76218 14.984 6.51554 15.0503 6.30372 14.9599C6.09185 14.8692 5.96904 14.6452 6.00685 14.4179L6.91016 9H2.50005C2.31067 9 2.13749 8.89303 2.05279 8.72364C1.96818 8.55437 1.98625 8.35167 2.09967 8.20021L8.09959 0.200304L8.15623 0.136828ZM3.50004 8.00001H7.49999C7.64696 8.00001 7.78682 8.06464 7.88182 8.17677C7.9767 8.28885 8.01724 8.43718 7.99315 8.58204L7.33007 12.5586L11.4999 7.00003H7.49999C7.35302 7.00003 7.21316 6.93541 7.11816 6.82327C7.02329 6.71118 6.98274 6.56286 7.00683 6.418L7.66894 2.44051L3.50004 8.00001Z"/></svg>
+                    <svg class="chev" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.15879 11.8651C6.36026 12.0536 6.67706 12.043 6.86582 11.8416L10.6158 7.84162C10.7957 7.64939 10.7957 7.35026 10.6158 7.15803L6.86582 3.15803L6.78868 3.09162C6.59895 2.95743 6.33504 2.96965 6.15879 3.13459C5.98254 3.29983 5.95206 3.56345 6.07383 3.76155L6.13535 3.84162L9.56407 7.49983L6.13535 11.158C5.94681 11.3595 5.95745 11.6763 6.15879 11.8651Z"/></svg>
+                  </div>
+                </div>
+                <div>
+                  <h1>CodeStorm Hub</h1>
+                  <div class="tag">Open Source Collective</div>
+                </div>
+              </div>
+
+              <div class="qr" title="Scan to open CodeStorm Hub">
+                <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code to codestorm-hub.github.io">
+                  <defs><clipPath id="qr-round"><rect width="44" height="44" rx="6" ry="6"/></clipPath></defs>
+                  <g clip-path="url(#qr-round)">
+                    <image href="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=https://codestorm-hub.github.io&color=000000&bgcolor=ffffff" x="0" y="0" width="44" height="44" preserveAspectRatio="xMidYMid slice" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <div>
+              <div class="person">Syed Salman Reza</div>
+              <div class="role">Senior Software Engineer · Lead Developer</div>
+            </div>
+
+            <div class="contacts">
+              <div class="row">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13a2.5 2.5 0 0 0 2.5-2.5v-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 7.5l-9 6-9-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>contact@codestormhub.io</span>
+              </div>
+
+              <div class="row">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.38 1.78.75 2.6a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.48-1.48a2 2 0 0 1 2.11-.45c.82.37 1.7.63 2.6.75A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>+1 (555) 123-4567</span>
+              </div>
+
+              <div class="row">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/><path d="M2 12h20M12 2c2.2 4 2.2 16 0 20M12 2c-2.2 4-2.2 16 0 20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>codestorm-hub.github.io</span>
+              </div>
+
+              <div class="row">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C7.58 2 4 5.58 4 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.67 7.67 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.01 8.01 0 0 0 20 10c0-4.42-3.58-8-8-8z" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>github.com/CodeStorm-Hub</span>
+              </div>
+
+              <div class="row">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M7 10v7M7 7v.01M10 17v-6c0-1.1.9-2 2-2s2 .9 2 2v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>linkedin.com/in/salman-reza</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
