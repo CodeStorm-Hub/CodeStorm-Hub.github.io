@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CodeStorm Hub — Visiting Card</title>
+
+    <!-- Geist Font (try CDN, fallback to Inter) -->
+    <link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    },
+                    colors: {
+                        csbg: '#0f1724', /* dark card */
+                        cslight: '#ffffff',
+                        csaccent: '#7c3aed', /* indigo-600 */
+                        csmuted: '#94a3b8'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Business card size: 3.5in x 2in */
+        .business-card { width: 3.5in; height: 2in; position: relative; overflow: hidden; border-radius: 12px; }
+
+        /* Force print colors */
+        .business-card, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+
+        @media print {
+            body { margin:0; display:flex; align-items:center; justify-content:center; height:100vh; }
+            .no-print { display:none !important; }
+            .business-card { box-shadow:none; border:1px solid #e5e7eb; }
+        }
+    </style>
+
+    <!-- Minimal favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%237c3aed'/%3E%3C/svg%3E">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Controls (hidden when printing) -->
+    <div class="no-print mb-6 flex items-center gap-3">
+        <button id="toggleTheme" class="px-3 py-2 rounded-md bg-white shadow">Toggle Theme</button>
+        <button onclick="window.print()" class="px-3 py-2 rounded-md bg-black text-white">Print</button>
+        <a class="px-3 py-2 rounded-md bg-gray-200" href="https://codestorm-hub.github.io" target="_blank" rel="noopener">Open Portfolio</a>
+    </div>
+
+    <!-- Card (two theme variations via body class) -->
+    <div id="card" class="business-card shadow-2xl overflow-hidden">
+        <!-- Light background -->
+        <div class="theme-light hidden absolute inset-0 bg-white text-slate-900">
+            <div class="h-full p-4 flex flex-col justify-between">
+                <div class="flex justify-between items-start">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-csaccent text-white rounded-lg flex items-center justify-center">
+                            <!-- Logo composed of ChevronLeft, LightningBolt, ChevronRight -->
+                            <div class="flex items-center justify-center gap-1" aria-hidden>
+                                <!-- Chevron Left -->
+                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 18L9 12l6-6" />
+                                </svg>
+
+                                <!-- Lightning Bolt (center) -->
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14h7l-1 8L21 10h-7l-1-8z" />
+                                </svg>
+
+                                <!-- Chevron Right -->
+                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 6l6 6-6 6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold">CodeStorm Hub</div>
+                            <div class="text-xs text-csmuted">Open Source Collective</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-1 rounded-md shadow-sm">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://codestorm-hub.github.io" alt="QR" class="w-12 h-12 block">
+                    </div>
+                </div>
+
+                <div class="mt-1">
+                    <div class="text-lg font-bold">Rafiqul Islam Susmoy</div>
+                    <div class="text-xs text-csmuted">Founder · Developer</div>
+                </div>
+
+                <div class="text-xs text-slate-600">
+                    <div class="flex gap-2 items-center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M3 5v14a2 2 0 0 0 2 2h14" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>contact@codestormhub.io</span></div>
+                    <div class="flex gap-2 items-center mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0z" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>codestorm-hub.github.io</span></div>
+                    <div class="flex gap-2 items-center mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>github.com/CodeStorm-Hub</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark background -->
+        <div class="theme-dark absolute inset-0 bg-csbg text-white">
+            <div class="h-full p-4 flex flex-col justify-between">
+                <div class="flex justify-between items-start">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-white/10 text-white rounded-lg flex items-center justify-center">
+                            <!-- Logo composed of ChevronLeft, LightningBolt, ChevronRight -->
+                            <div class="flex items-center justify-center gap-1" aria-hidden>
+                                <svg class="w-3 h-3 text-white/90" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 18L9 12l6-6" />
+                                </svg>
+
+                                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14h7l-1 8L21 10h-7l-1-8z" />
+                                </svg>
+
+                                <svg class="w-3 h-3 text-white/90" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 6l6 6-6 6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold">CodeStorm Hub</div>
+                            <div class="text-[11px] text-csmuted font-mono">Open Source Collective</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-1 rounded-md shadow-sm">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://codestorm-hub.github.io" alt="QR" class="w-12 h-12 block">
+                    </div>
+                </div>
+
+                <div class="mt-1">
+                    <div class="text-lg font-bold">Rafiqul Islam Susmoy</div>
+                    <div class="text-xs text-csmuted">Founder · Developer</div>
+                </div>
+
+                <div class="text-xs text-csmuted">
+                    <div class="flex gap-2 items-center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M3 5v14a2 2 0 0 0 2 2h14" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>contact@codestormhub.io</span></div>
+                    <div class="flex gap-2 items-center mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0z" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>codestorm-hub.github.io</span></div>
+                    <div class="flex gap-2 items-center mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>github.com/CodeStorm-Hub</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize theme: start dark
+        const body = document.body;
+        function setTheme(dark){
+            if(dark){
+                body.classList.add('dark');
+                document.querySelector('.theme-dark').classList.remove('hidden');
+                document.querySelector('.theme-light').classList.add('hidden');
+            } else {
+                body.classList.remove('dark');
+                document.querySelector('.theme-dark').classList.add('hidden');
+                document.querySelector('.theme-light').classList.remove('hidden');
+            }
+        }
+        setTheme(true);
+
+        document.getElementById('toggleTheme').addEventListener('click', () => {
+            const isDark = document.querySelector('.theme-dark').classList.contains('hidden');
+            setTheme(isDark);
+        });
+    </script>
+</body>
+</html>
