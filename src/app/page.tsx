@@ -7,7 +7,6 @@ import { Logo } from "@/components/ui/logo"
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons"
 import ProjectsSection from "@/components/home/projects-section"
 import TeamMembersSection from "@/components/home/team-members-section"
-import TeamsSection from "@/components/home/teams-section"
 
 export default function Home() {
   return (
@@ -97,9 +96,6 @@ export default function Home() {
 
       {/* Team Members Section */}
       <TeamMembersSection className="bg-muted/20" />
-
-      {/* Teams Section */}
-      <TeamsSection className="bg-background" />
     </>
   )
 }

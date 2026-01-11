@@ -132,37 +132,6 @@ const teams: Team[] = [
     ],
     joinUrl: "/teams/dx/join",
     learnMoreUrl: "/teams/dx"
-  },
-  {
-    id: "4",
-    name: "Community Growth",
-    focusArea: "Outreach & Engagement", 
-    mission: "Growing our global community through events, partnerships, mentorship programs, and inclusive engagement initiatives.",
-    members: [
-      { 
-        id: "12", 
-        name: "Maya Thompson", 
-        avatar: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=150&h=150&fit=crop&crop=face", 
-        role: "Community Manager",
-        github: "mayat-community"
-      },
-      { 
-        id: "13", 
-        name: "Luis Garcia", 
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face", 
-        role: "Event Coordinator",
-        github: "luisgarcia-events"
-      },
-      { 
-        id: "14", 
-        name: "Aisha Okonkwo", 
-        avatar: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face", 
-        role: "Diversity & Inclusion Lead",
-        github: "aishaoko-inclusion"
-      }
-    ],
-    joinUrl: "/teams/community/join",
-    learnMoreUrl: "/teams/community"
   }
 ]
 
