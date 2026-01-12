@@ -29,6 +29,8 @@ const DialogOverlay = React.forwardRef<
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
+type DialogOverlayProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
@@ -53,6 +55,8 @@ const DialogContent = React.forwardRef<
 ))
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
+type DialogContentProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+
 const DialogHeader = ({
   className,
   ...props
@@ -67,6 +71,8 @@ const DialogHeader = ({
 )
 DialogHeader.displayName = "DialogHeader"
 
+type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement>
+
 const DialogFooter = ({
   className,
   ...props
@@ -80,6 +86,8 @@ const DialogFooter = ({
   />
 )
 DialogFooter.displayName = "DialogFooter"
+
+type DialogFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
@@ -96,6 +104,8 @@ const DialogTitle = React.forwardRef<
 ))
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 
+type DialogTitleProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+
 const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
@@ -108,6 +118,8 @@ const DialogDescription = React.forwardRef<
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 
+type DialogDescriptionProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+
 export {
   Dialog,
   DialogPortal,
@@ -119,4 +131,13 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+}
+
+export type {
+  DialogOverlayProps,
+  DialogContentProps,
+  DialogHeaderProps,
+  DialogFooterProps,
+  DialogTitleProps,
+  DialogDescriptionProps,
 }
