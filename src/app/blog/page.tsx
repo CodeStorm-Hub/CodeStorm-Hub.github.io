@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { CalendarIcon, PersonIcon, ArrowRightIcon } from "@radix-ui/react-icons"
 import type { Metadata } from "next"
+import { getAllBlogPosts, getAllCategories } from "@/lib/blog-data"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -13,40 +15,10 @@ export const metadata: Metadata = {
   },
 }
 
-const blogPosts = [
-  {
-    title: "Welcome to CodeStorm Hub",
-    description: "Introducing our new community platform and what we're building together.",
-    author: "CodeStorm Hub Team",
-    date: "2024-01-15",
-    readTime: "3 min read",
-    category: "Announcement",
-    slug: "welcome-to-codestorm-hub",
-    featured: true,
-  },
-  {
-    title: "Building with Next.js 15 and Radix UI",
-    description: "A deep dive into our tech stack choices and why we chose these technologies.",
-    author: "Development Team",
-    date: "2024-01-10", 
-    readTime: "8 min read",
-    category: "Technical",
-    slug: "building-with-nextjs-radix",
-    featured: false,
-  },
-  {
-    title: "Community Guidelines and Best Practices",
-    description: "How to participate in our community and make meaningful contributions.",
-    author: "Community Team",
-    date: "2024-01-05",
-    readTime: "5 min read", 
-    category: "Community",
-    slug: "community-guidelines",
-    featured: false,
-  },
-]
-
-const categories = ["All", "Announcement", "Technical", "Community", "Tutorial", "News"]
+// Get blog posts and categories at build time
+const blogPosts = getAllBlogPosts()
+const allCategories = getAllCategories()
+const categories = ["All", ...allCategories]
 
 export default function BlogPage() {
   return (
@@ -105,10 +77,10 @@ export default function BlogPage() {
                     <span>{post.readTime}</span>
                   </div>
                   <Button asChild>
-                    <a href={`/blog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`}>
                       Read Article
                       <ArrowRightIcon className="ml-2 h-4 w-4" />
-                    </a>
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -146,10 +118,10 @@ export default function BlogPage() {
                         {post.readTime}
                       </div>
                       <Button variant="outline" size="sm" asChild>
-                        <a href={`/blog/${post.slug}`}>
+                        <Link href={`/blog/${post.slug}`}>
                           Read More
                           <ArrowRightIcon className="ml-2 h-3 w-3" />
-                        </a>
+                        </Link>
                       </Button>
                     </CardContent>
                   </Card>
@@ -186,22 +158,17 @@ export default function BlogPage() {
             </CardContent>
           </Card>
 
-          {/* Archive & RSS */}
+          {/* RSS */}
           <div className="text-center space-y-4">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="outline" asChild>
-                <a href="/blog/archive">
-                  View Archive
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a href="/rss.xml">
+                <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
                   RSS Feed
                 </a>
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              Looking for older posts? Check out our archive or subscribe to our RSS feed.
+              Subscribe to our RSS feed to stay updated with the latest posts.
             </p>
           </div>
         </div>

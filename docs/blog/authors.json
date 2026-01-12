@@ -1,0 +1,48 @@
+{
+  "authors": [
+    {
+      "name": "CodeStorm Hub Team",
+      "role": "Core Team",
+      "bio": "The collective voice of the CodeStorm Hub community, sharing updates, announcements, and insights from our open-source journey.",
+      "avatar": "/images/codestorm-logo.png",
+      "social": {
+        "github": "https://github.com/CodeStorm-Hub",
+        "twitter": "#",
+        "linkedin": "#"
+      }
+    },
+    {
+      "name": "Syed Salman Reza",
+      "role": "Founder & Lead Developer",
+      "bio": "Full-stack developer passionate about building scalable web applications and fostering open-source communities.",
+      "avatar": "/team-members/syed-salman-reza.jpg",
+      "social": {
+        "github": "https://github.com/syed-reza98",
+        "linkedin": "https://www.linkedin.com/in/salman-reza",
+        "twitter": "#"
+      }
+    },
+    {
+      "name": "Development Team",
+      "role": "Technical Writers",
+      "bio": "Our development team shares technical insights, tutorials, and best practices from building modern web applications.",
+      "avatar": "/images/team-avatar.png",
+      "social": {
+        "github": "https://github.com/CodeStorm-Hub",
+        "twitter": "#",
+        "linkedin": "#"
+      }
+    },
+    {
+      "name": "Community Team",
+      "role": "Community Managers",
+      "bio": "Dedicated to building and nurturing our open-source community through guidelines, support, and engagement.",
+      "avatar": "/images/community-avatar.png",
+      "social": {
+        "github": "https://github.com/CodeStorm-Hub",
+        "twitter": "#",
+        "linkedin": "#"
+      }
+    }
+  ]
+}
