@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container } from "@/components/ui/container"
@@ -74,8 +73,6 @@ interface ProductsSectionProps {
 }
 
 export default function ProductsSection({ className }: ProductsSectionProps) {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-
   return (
     <section className={className} aria-labelledby="products-heading">
       <Container className="py-16 sm:py-24">
@@ -149,7 +146,6 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                             variant="outline" 
                             size="sm" 
                             className="flex-1"
-                            onClick={() => setSelectedProduct(product)}
                           >
                             View Details
                           </Button>
@@ -194,7 +190,6 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                         width={1200}
                         height={675}
                         className="w-full h-auto object-cover"
-                        priority
                       />
                     </div>
 
