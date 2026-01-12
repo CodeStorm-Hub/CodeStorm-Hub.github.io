@@ -61,12 +61,35 @@ With real-time dashboards, intelligent reporting, and seamless integrations, Sto
     status: "active",
     category: "E-commerce"
   },
-  // Add more products here as they are developed
-  // {
-  //   id: "another-product",
-  //   name: "Product Name",
-  //   ...
-  // }
+  {
+    id: "stormerp",
+    name: "StormERP",
+    tagline: "Complete Enterprise Resource Planning Solution",
+    shortDescription: "A powerful cloud-based ERP SaaS platform designed to unify and streamline business operations for manufacturers, retailers, distributors, and service providers.",
+    fullDescription: `StormERP is a comprehensive enterprise resource planning solution built to help businesses of all sizes manage their entire operation from a single, unified platform. From manufacturing floors to retail storefronts, StormERP adapts to your unique business needs.
+
+Our cloud-native architecture ensures your team can access critical business data anytime, anywhere. With real-time synchronization across all modules, you'll never miss a beat—whether you're tracking inventory, processing payroll, or analyzing financial performance.
+
+StormERP eliminates data silos and manual processes, replacing them with automated workflows and intelligent insights. Scale confidently knowing your ERP grows with your business, supporting multiple locations, currencies, and regulatory requirements.
+
+Built with modern businesses in mind, StormERP integrates seamlessly with your existing tools while providing the flexibility to customize workflows to match your operational requirements.`,
+    features: [
+      "Inventory & Warehouse Management",
+      "Financial Accounting & Budgeting",
+      "Human Resources & Payroll",
+      "Supply Chain Management",
+      "Customer Relationship Management (CRM)",
+      "Production Planning & Scheduling",
+      "Purchase & Vendor Management",
+      "Sales Order Processing",
+      "Business Intelligence & Reporting",
+      "Multi-Location & Multi-Currency Support"
+    ],
+    productUrl: "https://erp.codestormhub.live",
+    dashboardImage: "/products/stormerp-dashboard.png",
+    status: "active",
+    category: "ERP"
+  },
 ]
 
 interface ProductsSectionProps {
