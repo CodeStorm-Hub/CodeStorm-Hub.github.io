@@ -42,12 +42,6 @@ const nextConfig: NextConfig = {
     // Type checking is handled by the CI pipeline
     ignoreBuildErrors: false,
   },
-
-  // ESLint configuration
-  eslint: {
-    // Linting is handled by the CI pipeline
-    ignoreDuringBuilds: false,
-  },
 };
 
 export default nextConfig;
