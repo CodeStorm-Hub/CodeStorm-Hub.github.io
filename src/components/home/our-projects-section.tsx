@@ -18,7 +18,7 @@ const projects: Project[] = [
   {
     id: "tms-sicip",
     title: "TMS SICIP",
-    description: "Government Transport Management System for SICIP Bangladesh. A comprehensive platform for managing transportation logistics and operations efficiently.",
+    description: "Training Management System for SICIP Bangladesh. A collaborative project delivering a comprehensive platform for managing training programs, schedules, and participant tracking efficiently.",
     image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80",
     category: "Government",
     url: "https://tms.sicip.gov.bd/"
