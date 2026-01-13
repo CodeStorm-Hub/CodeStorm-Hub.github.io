@@ -1,0 +1,114 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#0a0a0b"/>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="200" height="675" fill="#111113"/>
+  <rect x="16" y="20" width="168" height="40" rx="8" fill="#1a1a1d"/>
+  <text x="50" y="46" fill="#ffffff" font-family="Arial" font-size="16" font-weight="bold">StormERP</text>
+  
+  <!-- Sidebar menu items -->
+  <rect x="16" y="80" width="168" height="36" rx="6" fill="#3b82f6" opacity="0.2"/>
+  <text x="32" y="104" fill="#3b82f6" font-family="Arial" font-size="13">Dashboard</text>
+  <text x="32" y="144" fill="#71717a" font-family="Arial" font-size="13">Inventory</text>
+  <text x="32" y="180" fill="#71717a" font-family="Arial" font-size="13">Finance</text>
+  <text x="32" y="216" fill="#71717a" font-family="Arial" font-size="13">HR & Payroll</text>
+  <text x="32" y="252" fill="#71717a" font-family="Arial" font-size="13">Supply Chain</text>
+  <text x="32" y="288" fill="#71717a" font-family="Arial" font-size="13">Production</text>
+  <text x="32" y="324" fill="#71717a" font-family="Arial" font-size="13">Sales & CRM</text>
+  <text x="32" y="360" fill="#71717a" font-family="Arial" font-size="13">Reports</text>
+  
+  <!-- Main content area -->
+  <rect x="220" y="20" width="960" height="635" rx="12" fill="#111113"/>
+  
+  <!-- Header -->
+  <text x="240" y="55" fill="#ffffff" font-family="Arial" font-size="20" font-weight="bold">Enterprise Dashboard</text>
+  <text x="240" y="75" fill="#71717a" font-family="Arial" font-size="12">Overview of your business operations</text>
+  
+  <!-- Stats cards row -->
+  <rect x="240" y="100" width="220" height="100" rx="8" fill="#1a1a1d" stroke="#27272a" stroke-width="1"/>
+  <text x="260" y="130" fill="#71717a" font-family="Arial" font-size="12">Total Revenue</text>
+  <text x="260" y="165" fill="#ffffff" font-family="Arial" font-size="28" font-weight="bold">$2.4M</text>
+  <text x="260" y="185" fill="#22c55e" font-family="Arial" font-size="11">↑ 12.5% from last month</text>
+  
+  <rect x="480" y="100" width="220" height="100" rx="8" fill="#1a1a1d" stroke="#27272a" stroke-width="1"/>
+  <text x="500" y="130" fill="#71717a" font-family="Arial" font-size="12">Active Orders</text>
+  <text x="500" y="165" fill="#ffffff" font-family="Arial" font-size="28" font-weight="bold">1,847</text>
+  <text x="500" y="185" fill="#22c55e" font-family="Arial" font-size="11">↑ 8.3% from last week</text>
+  
+  <rect x="720" y="100" width="220" height="100" rx="8" fill="#1a1a1d" stroke="#27272a" stroke-width="1"/>
+  <text x="740" y="130" fill="#71717a" font-family="Arial" font-size="12">Inventory Items</text>
+  <text x="740" y="165" fill="#ffffff" font-family="Arial" font-size="28" font-weight="bold">45,231</text>
+  <text x="740" y="185" fill="#f59e0b" font-family="Arial" font-size="11">23 items low stock</text>
+  
+  <rect x="960" y="100" width="200" height="100" rx="8" fill="#1a1a1d" stroke="#27272a" stroke-width="1"/>
+  <text x="980" y="130" fill="#71717a" font-family="Arial" font-size="12">Employees</text>
+  <text x="980" y="165" fill="#ffffff" font-family="Arial" font-size="28" font-weight="bold">342</text>
+  <text x="980" y="185" fill="#3b82f6" font-family="Arial" font-size="11">5 departments</text>
+  
+  <!-- Charts area -->
+  <rect x="240" y="220" width="480" height="220" rx="8" fill="#1a1a1d" stroke="#27272a" stroke-width="1"/>
+  <text x="260" y="250" fill="#ffffff" font-family="Arial" font-size="14" font-weight="bold">Revenue Overview</text>
+  <!-- Simple bar chart representation -->
+  <rect x="280" y="380" width="40" height="80" rx="4" fill="#3b82f6" opacity="0.6"/>
+  <rect x="340" y="340" width="40" height="120" rx="4" fill="#3b82f6" opacity="0.7"/>
+  <rect x="400" y="300" width="40" height="160" rx="4" fill="#3b82f6" opacity="0.8"/>
+  <rect x="460" y="320" width="40" height="140" rx="4" fill="#3b82f6" opacity="0.75"/>
+  <rect x="520" y="280" width="40" height="180" rx="4" fill="#3b82f6" opacity="0.9"/>
+  <rect x="580" y="260" width="40" height="200" rx="4" fill="#3b82f6"/>
+  <rect x="640" y="290" width="40" height="170" rx="4" fill="#3b82f6" opacity="0.85"/>
+  <text x="290" y="420" fill="#71717a" font-family="Arial" font-size="10">Jan</text>
+  <text x="350" y="420" fill="#71717a" font-family="Arial" font-size="10">Feb</text>
+  <text x="410" y="420" fill="#71717a" font-family="Arial" font-size="10">Mar</text>
+  <text x="470" y="420" fill="#71717a" font-family="Arial" font-size="10">Apr</text>
+  <text x="530" y="420" fill="#71717a" font-family="Arial" font-size="10">May</text>
+  <text x="590" y="420" fill="#71717a" font-family="Arial" font-size="10">Jun</text>
+  <text x="650" y="420" fill="#71717a" font-family="Arial" font-size="10">Jul</text>
+  
+  <!-- Department breakdown -->
+  <rect x="740" y="220" width="420" height="220" rx="8" fill="#1a1a1d" stroke="#27272a" stroke-width="1"/>
+  <text x="760" y="250" fill="#ffffff" font-family="Arial" font-size="14" font-weight="bold">Department Performance</text>
+  <rect x="760" y="275" width="200" height="24" rx="4" fill="#3b82f6"/>
+  <text x="970" y="292" fill="#71717a" font-family="Arial" font-size="11">Manufacturing - 45%</text>
+  <rect x="760" y="310" width="160" height="24" rx="4" fill="#22c55e"/>
+  <text x="930" y="327" fill="#71717a" font-family="Arial" font-size="11">Sales - 36%</text>
+  <rect x="760" y="345" width="120" height="24" rx="4" fill="#f59e0b"/>
+  <text x="890" y="362" fill="#71717a" font-family="Arial" font-size="11">Logistics - 27%</text>
+  <rect x="760" y="380" width="80" height="24" rx="4" fill="#8b5cf6"/>
+  <text x="850" y="397" fill="#71717a" font-family="Arial" font-size="11">Support - 18%</text>
+  
+  <!-- Recent activity table -->
+  <rect x="240" y="460" width="920" height="180" rx="8" fill="#1a1a1d" stroke="#27272a" stroke-width="1"/>
+  <text x="260" y="490" fill="#ffffff" font-family="Arial" font-size="14" font-weight="bold">Recent Operations</text>
+  
+  <!-- Table headers -->
+  <text x="260" y="525" fill="#71717a" font-family="Arial" font-size="11">Operation</text>
+  <text x="480" y="525" fill="#71717a" font-family="Arial" font-size="11">Department</text>
+  <text x="660" y="525" fill="#71717a" font-family="Arial" font-size="11">Status</text>
+  <text x="840" y="525" fill="#71717a" font-family="Arial" font-size="11">Value</text>
+  <text x="1000" y="525" fill="#71717a" font-family="Arial" font-size="11">Time</text>
+  
+  <!-- Table rows -->
+  <line x1="260" y1="535" x2="1140" y2="535" stroke="#27272a" stroke-width="1"/>
+  <text x="260" y="560" fill="#ffffff" font-family="Arial" font-size="12">PO-2024-1847</text>
+  <text x="480" y="560" fill="#ffffff" font-family="Arial" font-size="12">Procurement</text>
+  <rect x="660" y="548" width="70" height="20" rx="4" fill="#22c55e" opacity="0.2"/>
+  <text x="675" y="562" fill="#22c55e" font-family="Arial" font-size="11">Approved</text>
+  <text x="840" y="560" fill="#ffffff" font-family="Arial" font-size="12">$24,500</text>
+  <text x="1000" y="560" fill="#71717a" font-family="Arial" font-size="12">2 min ago</text>
+  
+  <line x1="260" y1="575" x2="1140" y2="575" stroke="#27272a" stroke-width="1"/>
+  <text x="260" y="600" fill="#ffffff" font-family="Arial" font-size="12">INV-2024-3421</text>
+  <text x="480" y="600" fill="#ffffff" font-family="Arial" font-size="12">Finance</text>
+  <rect x="660" y="588" width="60" height="20" rx="4" fill="#f59e0b" opacity="0.2"/>
+  <text x="672" y="602" fill="#f59e0b" font-family="Arial" font-size="11">Pending</text>
+  <text x="840" y="600" fill="#ffffff" font-family="Arial" font-size="12">$8,750</text>
+  <text x="1000" y="600" fill="#71717a" font-family="Arial" font-size="12">15 min ago</text>
+  
+  <line x1="260" y1="615" x2="1140" y2="615" stroke="#27272a" stroke-width="1"/>
+  <text x="260" y="640" fill="#ffffff" font-family="Arial" font-size="12">WO-2024-0892</text>
+  <text x="480" y="640" fill="#ffffff" font-family="Arial" font-size="12">Production</text>
+  <rect x="660" y="628" width="80" height="20" rx="4" fill="#3b82f6" opacity="0.2"/>
+  <text x="670" y="642" fill="#3b82f6" font-family="Arial" font-size="11">In Progress</text>
+  <text x="840" y="640" fill="#ffffff" font-family="Arial" font-size="12">500 units</text>
+  <text x="1000" y="640" fill="#71717a" font-family="Arial" font-size="12">1 hour ago</text>
+</svg>
