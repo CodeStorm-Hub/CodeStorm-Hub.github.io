@@ -11,9 +11,50 @@ interface Project {
   description: string
   image: string
   category: string
+  url?: string
 }
 
 const projects: Project[] = [
+  {
+    id: "tms-sicip",
+    title: "TMS SICIP",
+    description: "Government Transport Management System for SICIP Bangladesh. A comprehensive platform for managing transportation logistics and operations efficiently.",
+    image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80",
+    category: "Government",
+    url: "https://tms.sicip.gov.bd/"
+  },
+  {
+    id: "dhamaka-express",
+    title: "Dhamaka Express",
+    description: "Premium e-commerce platform delivering quality products across Bangladesh. Fast shipping, secure payments, and exceptional customer service.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    category: "E-commerce",
+    url: "https://dhamakaexpress.com"
+  },
+  {
+    id: "walkinroom",
+    title: "WalkInRoom",
+    description: "Modern room booking and hotel reservation platform. Find and book your perfect accommodation with ease and convenience.",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    category: "Hospitality",
+    url: "https://walkinroom.com/"
+  },
+  {
+    id: "shesafe",
+    title: "SheSafe Sisterhood Hub",
+    description: "A safe space and community platform for women empowerment, safety resources, and sisterhood connections. Building stronger communities together.",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
+    category: "Community",
+    url: "https://shesafe-sisterhood-hub.vercel.app/"
+  },
+  {
+    id: "cleancrew",
+    title: "CleanCrew Dhaka Sparkle",
+    description: "Professional cleaning services platform for Dhaka city. Book reliable and efficient cleaning services for your home or office.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+    category: "Services",
+    url: "https://cleancrew-dhaka-sparkle.vercel.app/"
+  },
   {
     id: "wanderlust",
     title: "Wanderlust Travel",
@@ -93,8 +134,18 @@ export default function OurProjectsSection({ className }: OurProjectsSectionProp
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const CardWrapper = project.url ? 'a' : 'div'
+  const cardProps = project.url ? { 
+    href: project.url, 
+    target: "_blank", 
+    rel: "noopener noreferrer" 
+  } : {}
+
   return (
-    <div className="group relative overflow-hidden rounded-xl bg-card border border-border shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <CardWrapper 
+      {...cardProps}
+      className="group relative overflow-hidden rounded-xl bg-card border border-border shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 block cursor-pointer"
+    >
       {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
@@ -130,11 +181,19 @@ function ProjectCard({ project }: { project: Project }) {
         <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
           {project.description}
         </p>
+        {project.url && (
+          <div className="mt-3 flex items-center text-primary text-sm font-medium">
+            Visit Site
+            <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        )}
       </div>
 
       {/* Hover Border Effect */}
       <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-primary/30 transition-colors pointer-events-none" />
-    </div>
+    </CardWrapper>
   )
 }
 
