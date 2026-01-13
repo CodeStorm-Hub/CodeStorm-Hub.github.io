@@ -56,6 +56,14 @@ const projects: Project[] = [
     url: "https://cleancrew-dhaka-sparkle.vercel.app/"
   },
   {
+    id: "arvin-wed-sincia",
+    title: "Arvin & Sincia Wedding",
+    description: "A beautiful bilingual wedding website celebrating love and togetherness. Features event details, RSVP management, photo galleries, and live streaming for guests.",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
+    category: "Wedding",
+    url: "https://arvinwedsincia.com/"
+  },
+  {
     id: "wanderlust",
     title: "Wanderlust Travel",
     description: "Explore breathtaking destinations, create unforgettable memories, and experience the world like never before with our curated travel platform.",
