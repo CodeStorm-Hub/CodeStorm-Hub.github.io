@@ -65,33 +65,17 @@ interface OurProjectsSectionProps {
 export default function OurProjectsSection({ className }: OurProjectsSectionProps) {
   return (
     <section 
-      className={`relative bg-gradient-to-br from-[#1a1035] via-[#2d1f5c] to-[#1a1035] py-16 sm:py-24 ${className || ""}`}
+      className={`relative bg-muted/50 py-16 sm:py-24 ${className || ""}`}
       aria-labelledby="our-projects-heading"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 10px,
-              rgba(147, 51, 234, 0.1) 10px,
-              rgba(147, 51, 234, 0.1) 20px
-            )`
-          }}
-        />
-      </div>
-
       <Container className="relative z-10">
         <Stack gap={8}>
           {/* Section Header */}
           <Stack gap={4} align="center" className="text-center mb-4">
-            <Typography variant="h2" id="our-projects-heading" className="text-white">
+            <Typography variant="h2" id="our-projects-heading">
               Our Projects
             </Typography>
-            <Typography variant="lead" className="max-w-2xl text-gray-300">
+            <Typography variant="lead" className="max-w-2xl">
               Showcasing innovative web solutions that transform ideas into exceptional digital experiences
             </Typography>
           </Stack>
@@ -110,7 +94,7 @@ export default function OurProjectsSection({ className }: OurProjectsSectionProp
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group relative overflow-hidden rounded-xl bg-[#1e1245] border border-purple-900/30 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-purple-900/20 hover:-translate-y-1">
+    <div className="group relative overflow-hidden rounded-xl bg-card border border-border shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
@@ -121,11 +105,11 @@ function ProjectCard({ project }: { project: Project }) {
           sizes="(max-width: 768px) 100vw, 50vw"
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1e1245] via-[#1e1245]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         
         {/* Category Badge */}
         <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center rounded-full bg-purple-600/80 backdrop-blur-sm px-3 py-1 text-xs font-medium text-white">
+          <span className="inline-flex items-center rounded-full bg-primary/90 backdrop-blur-sm px-3 py-1 text-xs font-medium text-primary-foreground">
             {project.category}
           </span>
         </div>
@@ -140,16 +124,16 @@ function ProjectCard({ project }: { project: Project }) {
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
           {project.description}
         </p>
       </div>
 
       {/* Hover Border Effect */}
-      <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-purple-500/50 transition-colors pointer-events-none" />
+      <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-primary/30 transition-colors pointer-events-none" />
     </div>
   )
 }
