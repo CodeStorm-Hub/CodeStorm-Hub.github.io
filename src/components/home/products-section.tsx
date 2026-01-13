@@ -84,7 +84,7 @@ Built with modern businesses in mind, StormERP integrates seamlessly with your e
       "Business Intelligence & Reporting",
       "Multi-Location & Multi-Currency Support"
     ],
-    productUrl: "https://erp.codestormhub.live",
+    productUrl: "https://codestormhub.live/erp/dashboard",
     dashboardImage: "/products/stormerp-dashboard.png",
     status: "active",
     category: "ERP"
