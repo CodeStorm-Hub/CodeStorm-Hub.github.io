@@ -13,13 +13,18 @@ export interface ProjectData {
   stars?: number
   forks?: number
   lastUpdated?: string
-  status?: 'Active' | 'Archived' | 'Maintenance'
+  status?: 'Active' | 'Archived' | 'Maintenance' | 'In Development' | 'Under Construction'
   visibility?: 'Public' | 'Private'
   liveDemo?: string
   techStack?: string[]
   architecture?: string
   repositorySize?: string
   content: string
+  keyFeatures?: string[]
+  category?: string
+  tags?: string[]
+  prerequisites?: string[]
+  contributors?: string[]
 }
 
 let cachedProjectsData: ProjectData[] | null = null
@@ -77,17 +82,39 @@ function parseProjectMarkdown(content: string, slug: string): Partial<ProjectDat
     data.name = titleMatch.replace('# ', '').trim()
   }
   
-  // Extract overview/description
+  // Extract overview/description - Look for the first paragraph after ## Overview
   const overviewIndex = lines.findIndex(line => line.includes('## Overview'))
-  if (overviewIndex > -1 && overviewIndex < lines.length - 2) {
-    const descriptionLine = lines[overviewIndex + 2]
-    if (descriptionLine && !descriptionLine.startsWith('#')) {
-      data.overview = descriptionLine.trim()
+  if (overviewIndex > -1) {
+    // Find the first non-empty line after ## Overview (skip empty lines)
+    for (let i = overviewIndex + 1; i < lines.length; i++) {
+      const line = lines[i].trim()
+      if (line && !line.startsWith('#') && !line.startsWith('##')) {
+        data.overview = line
+        break
+      }
     }
   }
   
+  // Extract key features - Look for ## ✨ Key Features section
+  const featuresIndex = lines.findIndex(line => line.includes('## ✨ Key Features') || line.includes('## Key Features'))
+  if (featuresIndex > -1) {
+    const features: string[] = []
+    for (let i = featuresIndex + 1; i < lines.length; i++) {
+      const line = lines[i].trim()
+      if (line.startsWith('##')) break // Stop at next section
+      if (line.startsWith('- **') && line.includes(':**')) {
+        // Extract feature name and description
+        const featureMatch = line.match(/- \*\*([^*]+):\*\* (.+)/)
+        if (featureMatch) {
+          features.push(`${featureMatch[1]}: ${featureMatch[2]}`)
+        }
+      }
+    }
+    data.keyFeatures = features
+  }
+  
   // Extract GitHub URL
-  const githubMatch = content.match(/- \*\*GitHub:\*\* (https:\/\/github\.com\/[^\s\n]+)/)
+  const githubMatch = content.match(/- \*\*GitHub:\*\* (https:\/\/github\.com\/[^\s\n\]]+)/)
   if (githubMatch) {
     data.github = githubMatch[1]
   }
@@ -122,10 +149,10 @@ function parseProjectMarkdown(content: string, slug: string): Partial<ProjectDat
     data.lastUpdated = updateMatch[1].trim()
   }
   
-  // Extract status
-  const statusMatch = content.match(/- \*\*Status:\*\* (?:✅|🔄|📦) (Active|Archived|Maintenance)/)
+  // Extract status - Enhanced to handle more status types
+  const statusMatch = content.match(/- \*\*Status:\*\* (?:✅|🔄|📦|🏗️|🚧) (Active|Archived|Maintenance|In Development|Under Construction)/)
   if (statusMatch) {
-    data.status = statusMatch[1] as 'Active' | 'Archived' | 'Maintenance'
+    data.status = statusMatch[1] as ProjectData['status']
   }
   
   // Extract visibility
@@ -140,16 +167,72 @@ function parseProjectMarkdown(content: string, slug: string): Partial<ProjectDat
     data.liveDemo = demoMatch[2]
   }
   
-  // Extract tech stack
-  const techMatch = content.match(/- \*\*Technology Stack:\*\* (.+)/)
+  // Extract category
+  const categoryMatch = content.match(/- \*\*Category:\*\* (.+)/)
+  if (categoryMatch) {
+    data.category = categoryMatch[1].trim()
+  }
+  
+  // Extract tags
+  const tagsMatch = content.match(/- \*\*Tags:\*\* (.+)/)
+  if (tagsMatch) {
+    data.tags = tagsMatch[1].split(' ').map(tag => tag.replace('#', '').trim()).filter(tag => tag.length > 0)
+  }
+  
+  // Extract tech stack from multiple possible locations
+  const techMatch = content.match(/- \*\*Technology Stack:\*\* (.+)/) || 
+                   content.match(/- \*\*Framework:\*\* (.+)/)
   if (techMatch) {
-    data.techStack = techMatch[1].split(',').map(tech => tech.trim())
+    data.techStack = techMatch[1].split(/[,/]/).map(tech => tech.trim())
+  } else {
+    // Fallback: extract from Primary Technologies section
+    const primaryTechIndex = lines.findIndex(line => line.includes('### Primary Technologies'))
+    if (primaryTechIndex > -1) {
+      const techStack: string[] = []
+      for (let i = primaryTechIndex + 1; i < lines.length; i++) {
+        const line = lines[i].trim()
+        if (line.startsWith('###') || line.startsWith('##')) break
+        if (line.startsWith('- **') && line.includes(':**')) {
+          const techMatch = line.match(/- \*\*([^*]+):\*\*/)
+          if (techMatch) {
+            techStack.push(techMatch[1])
+          }
+        }
+      }
+      data.techStack = techStack
+    }
   }
   
   // Extract architecture
   const archMatch = content.match(/- \*\*Architecture:\*\* (.+)/)
   if (archMatch) {
     data.architecture = archMatch[1].trim()
+  }
+  
+  // Extract repository size
+  const sizeMatch = content.match(/- \*\*Repository Size:\*\* (.+)/)
+  if (sizeMatch) {
+    data.repositorySize = sizeMatch[1].trim()
+  }
+  
+  // Extract prerequisites from Getting Started section
+  const prerequisitesIndex = lines.findIndex(line => line.includes('### Prerequisites'))
+  if (prerequisitesIndex > -1) {
+    const prerequisites: string[] = []
+    for (let i = prerequisitesIndex + 1; i < lines.length; i++) {
+      const line = lines[i].trim()
+      if (line.startsWith('###') || line.startsWith('##')) break
+      if (line.startsWith('-') && !line.startsWith('- **')) {
+        prerequisites.push(line.replace(/^- /, '').trim())
+      }
+    }
+    data.prerequisites = prerequisites
+  }
+  
+  // Extract contributors
+  const contributorsMatch = content.match(/- \*\*Lead Developer:\*\* \[([^\]]+)\]/)
+  if (contributorsMatch) {
+    data.contributors = [contributorsMatch[1]]
   }
   
   return data
@@ -170,4 +253,23 @@ export function getProjectsByTechnology(tech: string): ProjectData[] {
     project.techStack?.some(t => t.toLowerCase().includes(tech.toLowerCase())) ||
     project.primaryLanguage?.toLowerCase().includes(tech.toLowerCase())
   )
+}
+
+export function getProjectsByCategory(category: string): ProjectData[] {
+  return getAllProjects().filter(project => 
+    project.category?.toLowerCase().includes(category.toLowerCase())
+  )
+}
+
+export function getAllCategories(): string[] {
+  const categories = getAllProjects()
+    .map(project => project.category)
+    .filter((category): category is string => Boolean(category))
+  return Array.from(new Set(categories)).sort()
+}
+
+export function getAllTags(): string[] {
+  const tags = getAllProjects()
+    .flatMap(project => project.tags || [])
+  return Array.from(new Set(tags)).sort()
 }
