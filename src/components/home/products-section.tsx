@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container } from "@/components/ui/container"
@@ -85,7 +84,7 @@ Built with modern businesses in mind, StormERP integrates seamlessly with your e
       "Business Intelligence & Reporting",
       "Multi-Location & Multi-Currency Support"
     ],
-    productUrl: "https://erp.codestormhub.live",
+    productUrl: "https://codestormhub.live/erp/dashboard",
     dashboardImage: "/products/stormerp-dashboard.png",
     status: "active",
     category: "ERP"
@@ -97,8 +96,6 @@ interface ProductsSectionProps {
 }
 
 export default function ProductsSection({ className }: ProductsSectionProps) {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-
   return (
     <section className={className} aria-labelledby="products-heading">
       <Container className="py-16 sm:py-24">
@@ -172,7 +169,6 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                             variant="outline" 
                             size="sm" 
                             className="flex-1"
-                            onClick={() => setSelectedProduct(product)}
                           >
                             View Details
                           </Button>
@@ -193,7 +189,10 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                 </Card>
 
                 {/* Product Detail Modal */}
-                <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+                <DialogContent 
+                  className="max-w-5xl max-h-[90vh] overflow-y-auto"
+                  aria-describedby={`product-description-${product.id}`}
+                >
                   <DialogHeader>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
@@ -222,7 +221,7 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                     </div>
 
                     {/* Description */}
-                    <div className="space-y-3">
+                    <div className="space-y-3" id={`product-description-${product.id}`}>
                       <h4 className="text-lg font-semibold">About {product.name}</h4>
                       <div className="text-muted-foreground whitespace-pre-line leading-relaxed">
                         {product.fullDescription}
