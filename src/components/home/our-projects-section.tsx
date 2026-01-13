@@ -26,9 +26,9 @@ const projects: Project[] = [
   {
     id: "dhamaka-express",
     title: "Dhamaka Express",
-    description: "Premium e-commerce platform delivering quality products across Bangladesh. Fast shipping, secure payments, and exceptional customer service.",
+    description: "Fast and reliable courier delivery service across Bangladesh. Track your parcels in real-time with secure handling and timely doorstep delivery.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    category: "E-commerce",
+    category: "Courier & Logistics",
     url: "https://dhamakaexpress.com"
   },
   {
