@@ -191,7 +191,7 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                 {/* Product Detail Modal */}
                 <DialogContent 
                   className="max-w-5xl max-h-[90vh] overflow-y-auto"
-                  aria-describedby="product-description"
+                  aria-describedby={`product-description-${product.id}`}
                 >
                   <DialogHeader>
                     <div className="flex items-center gap-3">
@@ -221,7 +221,7 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                     </div>
 
                     {/* Description */}
-                    <div className="space-y-3" id="product-description">
+                    <div className="space-y-3" id={`product-description-${product.id}`}>
                       <h4 className="text-lg font-semibold">About {product.name}</h4>
                       <div className="text-muted-foreground whitespace-pre-line leading-relaxed">
                         {product.fullDescription}
