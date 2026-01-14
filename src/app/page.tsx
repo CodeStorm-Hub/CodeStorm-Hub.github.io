@@ -33,13 +33,23 @@ export default function Home() {
             {/* CTA Buttons */}
             <Stack direction="row" gap={4} className="flex-col sm:flex-row max-w-md w-full">
               <Button size="lg" className="w-full sm:w-auto" asChild>
-                <a href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener noreferrer">
-                  <GitHubLogoIcon className="mr-2 h-4 w-4" />
+                <a 
+                  href="https://github.com/CodeStorm-Hub" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="View CodeStorm Hub projects on GitHub (opens in new tab)"
+                >
+                  <GitHubLogoIcon className="mr-2 h-4 w-4" aria-hidden="true" />
                   View Projects
-                  <ArrowRightIcon className="ml-2 h-4 w-4" />
+                  <ArrowRightIcon className="ml-2 h-4 w-4" aria-hidden="true" />
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="w-full sm:w-auto"
+                aria-label="Join the CodeStorm Hub community"
+              >
                 Join Community
               </Button>
             </Stack>
@@ -47,9 +57,9 @@ export default function Home() {
             {/* Features Grid */}
             <div className="mt-20 w-full max-w-5xl">
               <Grid cols={3} gap={8} className="items-start">
-                <Stack align="center" gap={4} className="text-center">
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center shadow-sm">
-                    <GitHubLogoIcon className="h-7 w-7 text-primary" />
+                <div className="text-center">
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center shadow-sm mx-auto mb-4" role="img" aria-label="Open source icon">
+                    <GitHubLogoIcon className="h-7 w-7 text-primary" aria-hidden="true" />
                   </div>
                   <div className="space-y-2">
                     <Typography variant="h5" className="font-semibold">Open Source</Typography>
@@ -57,10 +67,10 @@ export default function Home() {
                       Building transparent, accessible solutions for the community
                     </Typography>
                   </div>
-                </Stack>
+                </div>
                 
-                <Stack align="center" gap={4} className="text-center">
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center shadow-sm">
+                <div className="text-center">
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center shadow-sm mx-auto mb-4" role="img" aria-label="Community icon">
                     <svg className="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
@@ -71,10 +81,10 @@ export default function Home() {
                       Connecting passionate developers and researchers worldwide
                     </Typography>
                   </div>
-                </Stack>
+                </div>
                 
-                <Stack align="center" gap={4} className="text-center">
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center shadow-sm">
+                <div className="text-center">
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center shadow-sm mx-auto mb-4" role="img" aria-label="Innovation icon">
                     <svg className="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -85,7 +95,7 @@ export default function Home() {
                       Pushing boundaries with cutting-edge research and development
                     </Typography>
                   </div>
-                </Stack>
+                </div>
               </Grid>
             </div>
           </Stack>

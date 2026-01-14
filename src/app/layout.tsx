@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { SkipLinks } from "@/components/ui/skip-links";
+import { KeyboardNavigation } from "@/components/ui/keyboard-navigation";
 import { ThemeProvider } from "@/lib/theme-context";
 
 const geistSans = Geist({
@@ -57,10 +58,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
+          <KeyboardNavigation />
           <SkipLinks />
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main id="main-content" className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1" tabIndex={-1}>{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
