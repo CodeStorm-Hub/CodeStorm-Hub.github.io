@@ -19,9 +19,8 @@ const projects: Project[] = [
     id: "tms-sicip",
     title: "TMS SICIP",
     description: "Training Management System for SICIP Bangladesh. A collaborative project delivering a comprehensive platform for managing training programs, schedules, and participant tracking efficiently.",
-    image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80",
-    category: "Government",
-    url: "https://tms.sicip.gov.bd/"
+    image: "/products/tms-sicip-screenshot.png",
+    category: "Government"
   },
   {
     id: "dhamaka-express",
