@@ -19,14 +19,14 @@ const projects: Project[] = [
     id: "tms-sicip",
     title: "TMS SICIP",
     description: "Training Management System for SICIP Bangladesh. A collaborative project delivering a comprehensive platform for managing training programs, schedules, and participant tracking efficiently.",
-    image: "/products/tms-sicip-screenshot.png",
+    image: "/products/tms-login.png",
     category: "Government"
   },
   {
     id: "dhamaka-express",
     title: "Dhamaka Express",
     description: "Fast and reliable courier delivery service across Bangladesh. Track your parcels in real-time with secure handling and timely doorstep delivery.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    image: "/products/Screenshot 2026-01-14 191852.png",
     category: "Courier & Logistics",
     url: "https://dhamakaexpress.com"
   },
@@ -34,7 +34,7 @@ const projects: Project[] = [
     id: "walkinroom",
     title: "WalkInRoom",
     description: "Modern room booking and hotel reservation platform. Find and book your perfect accommodation with ease and convenience.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    image: "/products/Screenshot 2026-01-14 192055.png",
     category: "Hospitality",
     url: "https://walkinroom.com/"
   },
