@@ -215,7 +215,7 @@ export default function ProjectsPage() {
                 implementation for best practices in web development.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded">Next.js 15</span>
+                <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded">Next.js 16</span>
                 <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded">Tailwind CSS 4</span>
                 <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded">Radix UI</span>
                 <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded">TypeScript</span>

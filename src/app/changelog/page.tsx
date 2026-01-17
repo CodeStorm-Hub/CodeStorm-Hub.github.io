@@ -67,7 +67,7 @@ const changelogEntries = [
           "Basic responsive design system",
           "Tailwind CSS 4 integration",
           "Radix UI component library",
-          "Next.js 15 with App Router",
+          "Next.js 16 with App Router",
           "TypeScript configuration",
         ],
       },
