@@ -5,7 +5,7 @@ import { Grid } from "@/components/ui/grid"
 import { Stack } from "@/components/ui/stack"
 import { Logo } from "@/components/ui/logo"
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons"
-import ProjectsSection from "@/components/home/projects-section"
+import OurProjectsSection from "@/components/home/our-projects-section"
 import ProductsSection from "@/components/home/products-section"
 import TeamMembersSection from "@/components/home/team-members-section"
 
@@ -92,8 +92,8 @@ export default function Home() {
         </Container>
       </div>
 
-      {/* Projects Section */}
-      <ProjectsSection className="bg-background" />
+      {/* Our Projects Section */}
+      <OurProjectsSection />
 
       {/* Products Section */}
       <ProductsSection className="bg-muted/30" />
