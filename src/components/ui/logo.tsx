@@ -32,51 +32,52 @@ const sizeClasses = {
   }
 }
 
+// Move components outside render to avoid recreation on each render
+const IconContent = ({ sizes }: { sizes: typeof sizeClasses[keyof typeof sizeClasses] }) => (
+  <div className={cn(
+    "inline-flex items-center justify-center",
+    sizes.container,
+    "relative"
+  )}>
+    {/* Left Chevron */}
+    <ChevronLeftIcon 
+      className={cn(
+        sizes.icon,
+        "text-primary/60"
+      )} 
+    />
+    {/* Central Lightning Bolt - The main focus */}
+    <LightningBoltIcon 
+      className={cn(
+        sizes.lightning,
+        "text-primary mx-0.5 relative z-10"
+      )} 
+    />
+    {/* Right Chevron */}
+    <ChevronRightIcon 
+      className={cn(
+        sizes.icon,
+        "text-primary/60"
+      )} 
+    />
+  </div>
+)
+
+const TextContent = ({ sizes }: { sizes: typeof sizeClasses[keyof typeof sizeClasses] }) => (
+  <span className={cn(sizes.text, "tracking-tight")}>
+    <span className="text-foreground">Code</span>
+    <span className="text-primary">Storm</span>
+    <span className="text-foreground"> Hub</span>
+  </span>
+)
+
 export function Logo({ className, size = 'md', variant = 'full' }: LogoProps) {
   const sizes = sizeClasses[size]
-  
-  const IconComponent = () => (
-    <div className={cn(
-      "inline-flex items-center justify-center",
-      sizes.container,
-      "relative"
-    )}>
-      {/* Left Chevron */}
-      <ChevronLeftIcon 
-        className={cn(
-          sizes.icon,
-          "text-primary/60"
-        )} 
-      />
-      {/* Central Lightning Bolt - The main focus */}
-      <LightningBoltIcon 
-        className={cn(
-          sizes.lightning,
-          "text-primary mx-0.5 relative z-10"
-        )} 
-      />
-      {/* Right Chevron */}
-      <ChevronRightIcon 
-        className={cn(
-          sizes.icon,
-          "text-primary/60"
-        )} 
-      />
-    </div>
-  )
-
-  const TextComponent = () => (
-    <span className={cn(sizes.text, "tracking-tight")}>
-      <span className="text-foreground">Code</span>
-      <span className="text-primary">Storm</span>
-      <span className="text-foreground"> Hub</span>
-    </span>
-  )
 
   if (variant === 'icon') {
     return (
       <div className={className}>
-        <IconComponent />
+        <IconContent sizes={sizes} />
       </div>
     )
   }
@@ -84,15 +85,15 @@ export function Logo({ className, size = 'md', variant = 'full' }: LogoProps) {
   if (variant === 'text') {
     return (
       <div className={className}>
-        <TextComponent />
+        <TextContent sizes={sizes} />
       </div>
     )
   }
 
   return (
     <div className={cn("flex items-center", sizes.spacing, className)}>
-      <IconComponent />
-      <TextComponent />
+      <IconContent sizes={sizes} />
+      <TextContent sizes={sizes} />
     </div>
   )
 }

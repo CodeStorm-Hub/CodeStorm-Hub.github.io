@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react'
 
 export type Theme = 'light' | 'dark'
 
@@ -17,60 +17,63 @@ interface ThemeProviderProps {
   children: React.ReactNode
 }
 
+// Helper function to get initial theme
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') return 'light'
+  
+  const stored = localStorage.getItem('theme') as Theme | null
+  if (stored && (stored === 'light' || stored === 'dark')) {
+    return stored
+  }
+  
+  // Check system preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  return prefersDark ? 'dark' : 'light'
+}
+
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>('light')
+  // Initialize with computed value to avoid state updates in useEffect
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme)
   const [mounted, setMounted] = useState(false)
 
-  // Initialize theme on mount
+  // Apply theme to DOM only - no state updates here
   useEffect(() => {
-    setMounted(true)
-    
-    // Check for stored theme preference or default to system preference
-    const stored = localStorage.getItem('theme') as Theme | null
-    if (stored && (stored === 'light' || stored === 'dark')) {
-      setThemeState(stored)
-      applyTheme(stored)
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      const systemTheme: Theme = prefersDark ? 'dark' : 'light'
-      setThemeState(systemTheme)
-      applyTheme(systemTheme)
-    }
-  }, [])
-
-  const applyTheme = (newTheme: Theme) => {
     const root = document.documentElement
-    if (newTheme === 'dark') {
+    if (theme === 'dark') {
       root.classList.add('dark')
     } else {
       root.classList.remove('dark')
     }
-  }
+  }, [theme])
+  
+  // Separate effect for setting mounted state only once
+   
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true)
+  }, [])
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     if (!mounted) return
     
     const newTheme: Theme = theme === 'light' ? 'dark' : 'light'
     setThemeState(newTheme)
     localStorage.setItem('theme', newTheme)
-    applyTheme(newTheme)
-  }
+  }, [theme, mounted])
 
-  const setTheme = (newTheme: Theme) => {
+  const setTheme = useCallback((newTheme: Theme) => {
     if (!mounted) return
     
     setThemeState(newTheme)
     localStorage.setItem('theme', newTheme)
-    applyTheme(newTheme)
-  }
+  }, [mounted])
 
-  const value: ThemeContextType = {
+  const value: ThemeContextType = useMemo(() => ({
     theme,
     toggleTheme,
     setTheme,
     mounted,
-  }
+  }), [theme, toggleTheme, setTheme, mounted])
 
   return (
     <ThemeContext.Provider value={value}>
