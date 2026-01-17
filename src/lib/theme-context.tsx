@@ -47,7 +47,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }, [theme])
   
   // Separate effect for setting mounted state only once
-   
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
