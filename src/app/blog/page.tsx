@@ -25,7 +25,7 @@ const blogPosts = [
     featured: true,
   },
   {
-    title: "Building with Next.js 15 and Radix UI",
+    title: "Building with Next.js 16 and Radix UI",
     description: "A deep dive into our tech stack choices and why we chose these technologies.",
     author: "Development Team",
     date: "2024-01-10", 

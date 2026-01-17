@@ -29,8 +29,8 @@ const upcomingEvents = [
     featured: true,
   },
   {
-    title: "Next.js 15 Deep Dive",
-    description: "Explore the latest features in Next.js 15 and learn how to build modern web applications.",
+    title: "Next.js 16 Deep Dive",
+    description: "Explore the latest features in Next.js 16 and learn how to build modern web applications.",
     date: "2024-02-22",
     time: "19:00 UTC", 
     duration: "1.5 hours",
