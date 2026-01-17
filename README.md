@@ -6,11 +6,12 @@ This is the official portfolio website built with Next.js, Tailwind CSS, and Rad
 
 ## Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org) with App Router
+- **Framework**: [Next.js 16](https://nextjs.org) with App Router and Turbopack
+- **React**: React 19 with modern React features
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com) and [Radix Colors](https://www.radix-ui.com/colors)
 - **Components**: [Radix UI](https://www.radix-ui.com) and [Radix Icons](https://www.radix-ui.com/icons)
 - **Typography**: [Geist Font](https://vercel.com/font)
-- **Language**: TypeScript
+- **Language**: TypeScript (strict mode)
 - **Deployment**: GitHub Pages (automated via GitHub Actions)
 
 ## Getting Started
@@ -62,8 +63,8 @@ npm install
 
 ### Available Scripts
 
-- `npm run dev` - Start development server with Turbopack
-- `npm run build` - Build for production (GitHub Pages optimized)
+- `npm run dev` - Start development server (Turbopack enabled by default in Next.js 16)
+- `npm run build` - Build for production (GitHub Pages optimized with Turbopack)
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint with auto-fix
 - `npm run type-check` - Run TypeScript type checking
