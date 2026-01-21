@@ -148,3 +148,87 @@ body {
 * {
   border-color: var(--border);
 }
+
+/* Enhanced Focus Indicators for WCAG 2.1 AA Compliance */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* High contrast focus for better visibility */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+}
+
+/* Skip links enhanced visibility */
+.sr-only:focus-visible,
+.sr-only:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: nowrap;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+}
+
+/* Button focus states */
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Link focus states */
+a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Form element focus states */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-color: var(--ring);
+}
+
+/* Ensure interactive elements have minimum touch target size */
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Improved link styling for better accessibility */
+a {
+  color: var(--primary);
+  text-decoration-skip-ink: auto;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
