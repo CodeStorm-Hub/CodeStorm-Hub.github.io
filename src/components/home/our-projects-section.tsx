@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container"
 import { Typography } from "@/components/ui/typography"
 import { Stack } from "@/components/ui/stack"
 import Image from "next/image"
+import { getAssetPath } from "@/lib/image-utils"
 
 interface Project {
   id: string
@@ -156,7 +157,7 @@ function ProjectCard({ project }: { project: Project }) {
       {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
-          src={project.image}
+          src={getAssetPath(project.image)}
           alt={project.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"

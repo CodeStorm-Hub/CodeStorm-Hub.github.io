@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { getAssetPath } from "@/lib/image-utils"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container } from "@/components/ui/container"
 import { Typography } from "@/components/ui/typography"
@@ -211,7 +212,7 @@ export default function ProductsSection({ className }: ProductsSectionProps) {
                     {/* Dashboard Screenshot */}
                     <div className="relative rounded-lg overflow-hidden border bg-muted">
                       <Image
-                        src={product.dashboardImage}
+                        src={getAssetPath(product.dashboardImage)}
                         alt={`${product.name} Dashboard`}
                         width={1200}
                         height={675}

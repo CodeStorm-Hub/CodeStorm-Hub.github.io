@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { getAssetPath } from './image-utils'
 
 export interface TeamMember {
   name: string
@@ -29,14 +30,17 @@ export function getTeamData(): TeamData {
     const teamJsonContent = fs.readFileSync(teamJsonPath, 'utf8')
     const rawData = JSON.parse(teamJsonContent)
     
-    // Fix image paths to ensure they point to the correct location
+    // Fix image paths to ensure they point to the correct location and respect base path
     cachedTeamData = {
-      team: rawData.team.map((member: TeamMember) => ({
-        ...member,
-        image: member.image.startsWith('/') 
+      team: rawData.team.map((member: TeamMember) => {
+        const rawImg = member.image.startsWith('/') 
           ? `/team-members${member.image}` 
           : `/team-members/${member.image}`
-      }))
+        return {
+          ...member,
+          image: getAssetPath(rawImg),
+        }
+      })
     }
     
     return cachedTeamData!

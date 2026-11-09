@@ -3,6 +3,7 @@ import { getAllTeamMembers } from "@/lib/team-data";
 import { ShieldCheck } from "lucide-react";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { getAssetPath } from "@/lib/image-utils";
 
 export const metadata = {
   title: "Architects Dossier // Core Engineering Roster | CodeStorm Hub",
@@ -54,7 +55,7 @@ export default function TeamPage() {
               {/* Photo & Scanline Overlay */}
               <div className="aspect-[4/3] w-full bg-storm-panel border border-storm-border overflow-hidden relative mb-5 grayscale group-hover:grayscale-0 transition-all">
                 <img
-                  src={member.image}
+                  src={getAssetPath(member.image)}
                   alt={member.name}
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />

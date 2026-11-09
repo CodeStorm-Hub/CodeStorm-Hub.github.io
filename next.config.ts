@@ -1,11 +1,30 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+// Automatically detect repository name from GitHub Actions GITHUB_REPOSITORY (e.g. "syed-reza98/CodeStorm-Hub") or default to "/CodeStorm-Hub" in production
+const repoName = process.env.GITHUB_REPOSITORY
+  ? `/${process.env.GITHUB_REPOSITORY.split("/")[1]}`
+  : "/CodeStorm-Hub";
+const isUserPage = process.env.GITHUB_REPOSITORY?.endsWith(".github.io");
+const defaultBasePath = isUserPage ? "" : repoName;
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? (isProd ? defaultBasePath : "");
+
 const nextConfig: NextConfig = {
   // Enable static export for GitHub Pages
   output: "export",
+
+  // Set basePath and assetPrefix for GitHub Pages subpath deployment
+  basePath: basePath || undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
+
+  // Pass basePath to client runtime environment
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   
-  // Disable trailing slash for better GitHub Pages compatibility
-  trailingSlash: false,
+  // Trailing slash ensures clean index.html directory routing on GitHub Pages
+  trailingSlash: true,
   
   // Configure images for static export
   images: {
@@ -14,7 +33,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "github.com",
-        pathname: "/CodeStorm-Hub/**",
+        pathname: "/**",
       },
       {
         protocol: "https", 
@@ -39,13 +58,11 @@ const nextConfig: NextConfig = {
 
   // TypeScript configuration
   typescript: {
-    // Type checking is handled by the CI pipeline
     ignoreBuildErrors: false,
   },
 
   // ESLint configuration
   eslint: {
-    // Linting is handled by the CI pipeline
     ignoreDuringBuilds: false,
   },
 };

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Terminal, Zap, Cpu, Server, Activity, ChevronRight, Layers, ShieldCheck } from "lucide-react";
 import { StormCoreReactor } from "@/components/canvas/storm-core-reactor";
+import { getAssetPath } from "@/lib/image-utils";
 
 export default function HomePage() {
   return (
@@ -410,7 +411,7 @@ export default function HomePage() {
               <div className="space-y-3">
                 <div className="aspect-square w-full bg-storm-panel border border-storm-border overflow-hidden relative grayscale hover:grayscale-0 transition-all">
                   <img
-                    src={member.img}
+                    src={getAssetPath(member.img)}
                     alt={member.name}
                     className="w-full h-full object-cover object-top"
                   />

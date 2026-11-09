@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Server, CheckCircle2 } from "lucide-react";
+import { getAssetPath } from "@/lib/image-utils";
 
 export const metadata = {
   title: "Commercial SaaS Showcase // StormCom & StormERP | CodeStorm Hub",
@@ -95,7 +96,7 @@ export default function ShowcasePage() {
               </div>
               <div className="aspect-video w-full bg-storm-titanium border border-storm-border overflow-hidden relative group">
                 <img
-                  src="/products/stormcom-dashboard.png"
+                  src={getAssetPath("/products/stormcom-dashboard.png")}
                   alt="StormCom Dashboard Overview"
                   className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                 />
@@ -190,7 +191,7 @@ export default function ShowcasePage() {
               </div>
               <div className="aspect-video w-full bg-storm-titanium border border-storm-border overflow-hidden relative group">
                 <img
-                  src="/products/stormerp-dashboard.png"
+                  src={getAssetPath("/products/stormerp-dashboard.png")}
                   alt="StormERP Dashboard Overview"
                   className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                 />
