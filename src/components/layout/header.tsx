@@ -1,267 +1,151 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
-import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Container } from "@/components/ui/container"
-import { Logo } from "@/components/ui/logo"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { GitHubLogoIcon, HamburgerMenuIcon, Cross1Icon, ChevronDownIcon } from "@radix-ui/react-icons"
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Terminal, Menu, X, Zap } from "lucide-react";
+import { StormOSDrawer } from "@/components/interactive/storm-os-drawer";
+import { TextScrambler } from "@/components/interactive/text-scrambler";
 
-const navigationItems = {
-  main: [
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/team", label: "Team" },
-    { href: "/contact", label: "Contact" },
-  ],
-  community: [
-    { href: "/community", label: "Community" },
-    { href: "/blog", label: "Blog" },
-    { href: "/events", label: "Events" },
-    { href: "/showcase", label: "Showcase" },
-  ],
-  resources: [
-    { href: "/resources", label: "Resources" },
-    { href: "/contributing", label: "Contributing" },
-    { href: "/code-of-conduct", label: "Code of Conduct" },
-    { href: "/changelog", label: "Changelog" },
-    { href: "/roadmap", label: "Roadmap" },
-  ],
-  legal: [
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms of Service" },
-    { href: "/accessibility", label: "Accessibility" },
-  ],
-  developer: [
-    { href: "/style-guide", label: "Style Guide" },
-  ]
-}
+const NAV_LINKS = [
+  { href: "/projects", label: "01 // WORK" },
+  { href: "/showcase", label: "02 // PRODUCTS" },
+  { href: "/team", label: "03 // ARCHITECTS" },
+  { href: "/about", label: "04 // INTEL" },
+  { href: "/contact", label: "05 // TRANSMIT" },
+];
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  const isActivePath = (href: string) => {
-    if (href === "/") return pathname === "/"
-    return pathname.startsWith(href)
-  }
+  // Listen for `/` or `~` hotkey to toggle STORM-OS
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't trigger if user is actively typing in an input or textarea
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
+        return;
+      }
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+      if (e.key === "/" || e.key === "~" || e.key === "`") {
+        e.preventDefault();
+        setIsTerminalOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
-    <header id="navigation" className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <Container>
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Logo size="sm" />
-          </Link>
+    <>
+      <header className="sticky top-0 z-40 w-full border-b border-storm-border bg-storm-void/90 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between font-mono">
+          {/* Logo & Status Badge */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="flex items-center gap-2 group text-storm-white hover:text-storm-cyan transition-colors"
+            >
+              <div className="w-7 h-7 bg-storm-panel border border-storm-border group-hover:border-storm-cyan flex items-center justify-center transition-colors">
+                <Zap className="w-4 h-4 text-storm-cyan" />
+              </div>
+              <span className="font-bold tracking-wider text-sm">
+                CODE<span className="text-storm-cyan">STORM</span>
+              </span>
+            </Link>
+
+            <div className="hidden md:flex items-center gap-2 text-[10px] text-storm-muted border border-storm-border px-2 py-0.5 bg-storm-titanium">
+              <span className="w-1.5 h-1.5 rounded-full bg-storm-volt animate-ping" />
+              <span>SYS_OK</span>
+              <span className="text-storm-border">|</span>
+              <span className="text-storm-cyan">EDGE_CONNECTED</span>
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1" aria-label="Main navigation">
-            {/* Main Navigation Items */}
-            {navigationItems.main.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`px-3 py-2 text-sm font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
-                  isActivePath(item.href)
-                    ? "text-foreground bg-accent"
-                    : "text-foreground/60 hover:text-foreground hover:bg-accent/50"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            {/* Community Dropdown */}
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger asChild>
-                <Button variant="ghost" size="sm" className="h-10 text-sm font-medium text-foreground/60 hover:text-foreground">
-                  Community
-                  <ChevronDownIcon className="ml-1 h-3 w-3" />
-                </Button>
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Portal>
-                <DropdownMenu.Content className="min-w-[200px] bg-popover border border-border rounded-md shadow-md p-1" sideOffset={5}>
-                  {navigationItems.community.map((item) => (
-                    <DropdownMenu.Item key={item.href} asChild>
-                      <Link
-                        href={item.href}
-                        className={`flex items-center px-3 py-2 text-sm rounded-sm cursor-default focus:outline-none transition-colors ${
-                          isActivePath(item.href)
-                            ? "bg-accent text-accent-foreground"
-                            : "text-popover-foreground hover:bg-accent hover:text-accent-foreground"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </DropdownMenu.Item>
-                  ))}
-                </DropdownMenu.Content>
-              </DropdownMenu.Portal>
-            </DropdownMenu.Root>
-
-            {/* Resources Dropdown */}
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger asChild>
-                <Button variant="ghost" size="sm" className="h-10 text-sm font-medium text-foreground/60 hover:text-foreground">
-                  Resources
-                  <ChevronDownIcon className="ml-1 h-3 w-3" />
-                </Button>
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Portal>
-                <DropdownMenu.Content className="min-w-[200px] bg-popover border border-border rounded-md shadow-md p-1" sideOffset={5}>
-                  {navigationItems.resources.map((item) => (
-                    <DropdownMenu.Item key={item.href} asChild>
-                      <Link
-                        href={item.href}
-                        className={`flex items-center px-3 py-2 text-sm rounded-sm cursor-default focus:outline-none transition-colors ${
-                          isActivePath(item.href)
-                            ? "bg-accent text-accent-foreground"
-                            : "text-popover-foreground hover:bg-accent hover:text-accent-foreground"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </DropdownMenu.Item>
-                  ))}
-                </DropdownMenu.Content>
-              </DropdownMenu.Portal>
-            </DropdownMenu.Root>
+          <nav className="hidden lg:flex items-center gap-6 text-xs" aria-label="Main Navigation">
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`py-1 px-2 border transition-all duration-200 ${
+                    isActive
+                      ? "border-storm-cyan text-storm-cyan bg-storm-panel/60 shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                      : "border-transparent text-storm-muted hover:text-storm-white hover:border-storm-border"
+                  }`}
+                >
+                  <TextScrambler text={link.label} trigger="hover" speed={25} />
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-2">
-            <ThemeToggle />
-            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
-              <Link href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener noreferrer">
-                <GitHubLogoIcon className="h-4 w-4 mr-2" />
-                GitHub
-              </Link>
-            </Button>
-            <Button size="sm" className="hidden sm:inline-flex">
-              Join Us
-            </Button>
-            
-            {/* Mobile Menu Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="lg:hidden"
-              onClick={toggleMobileMenu}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label="Toggle navigation menu"
+          {/* Right Controls: STORM-OS & Mobile Toggle */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsTerminalOpen(true)}
+              aria-label="Open STORM-OS Command Terminal"
+              className="flex items-center gap-2 px-3 py-1.5 border border-storm-border bg-storm-titanium hover:border-storm-volt text-storm-white hover:text-storm-volt transition-colors text-xs font-mono group"
             >
-              {isMobileMenuOpen ? (
-                <Cross1Icon className="h-4 w-4" />
-              ) : (
-                <HamburgerMenuIcon className="h-4 w-4" />
-              )}
-            </Button>
+              <Terminal className="w-3.5 h-3.5 text-storm-volt group-hover:animate-pulse" />
+              <span className="hidden sm:inline font-bold">STORM_OS</span>
+              <kbd className="hidden sm:inline-block px-1 py-0.2 text-[10px] bg-storm-void border border-storm-border text-storm-muted group-hover:text-storm-volt">
+                /
+              </kbd>
+            </button>
+
+            {/* Mobile Menu Trigger */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Mobile Menu"
+              className="lg:hidden p-2 border border-storm-border bg-storm-titanium text-storm-white hover:text-storm-cyan"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <div id="mobile-menu" className="lg:hidden border-t border-border">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {/* Main Navigation */}
-              <div className="space-y-1">
-                {navigationItems.main.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                      isActivePath(item.href)
-                        ? "text-foreground bg-accent"
-                        : "text-foreground/60 hover:text-foreground hover:bg-accent/50"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Community Section */}
-              <div className="pt-4">
-                <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                  Community
-                </div>
-                {navigationItems.community.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                      isActivePath(item.href)
-                        ? "text-foreground bg-accent"
-                        : "text-foreground/60 hover:text-foreground hover:bg-accent/50"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Resources Section */}
-              <div className="pt-4">
-                <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                  Resources
-                </div>
-                {navigationItems.resources.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                      isActivePath(item.href)
-                        ? "text-foreground bg-accent"
-                        : "text-foreground/60 hover:text-foreground hover:bg-accent/50"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Mobile CTA Buttons */}
-              <div className="pt-4 space-y-2">
-                <Button asChild className="w-full justify-center">
-                  <Link href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener noreferrer">
-                    <GitHubLogoIcon className="h-4 w-4 mr-2" />
-                    View on GitHub
-                  </Link>
-                </Button>
-                <Button variant="outline" className="w-full justify-center">
-                  Join Community
-                </Button>
-              </div>
-
-              {/* Legal Links */}
-              <div className="pt-4 border-t border-border">
-                <div className="flex flex-wrap gap-4 px-3 py-2">
-                  {navigationItems.legal.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+          <div className="lg:hidden border-t border-storm-border bg-storm-void px-4 py-4 space-y-2 font-mono text-sm">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block py-2 px-3 border border-storm-border hover:border-storm-cyan text-storm-muted hover:text-storm-white hover:bg-storm-titanium transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="pt-2 border-t border-storm-border/50">
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsTerminalOpen(true);
+                }}
+                className="w-full py-2 px-3 border border-storm-volt text-storm-volt bg-storm-titanium flex items-center justify-center gap-2 text-xs font-bold"
+              >
+                <Terminal className="w-4 h-4" />
+                OPEN STORM_OS TERMINAL
+              </button>
             </div>
           </div>
         )}
-      </Container>
-    </header>
-  )
+      </header>
+
+      {/* Global Terminal Drawer */}
+      <StormOSDrawer
+        isOpen={isTerminalOpen}
+        onClose={() => setIsTerminalOpen(false)}
+      />
+    </>
+  );
 }

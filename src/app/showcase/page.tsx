@@ -1,401 +1,237 @@
-import { Container } from "@/components/ui/container"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { StarIcon, RocketIcon, HeartIcon, GlobeIcon } from "@radix-ui/react-icons"
-import Image from "next/image"
-import type { Metadata } from "next"
+import React from "react";
+import Link from "next/link";
+import { ArrowUpRight, Server, CheckCircle2 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Showcase",
-  description: "Discover organizations and projects using CodeStorm Hub solutions and see our community impact.",
-  openGraph: {
-    title: "Showcase | CodeStorm Hub",
-    description: "Discover organizations and projects using CodeStorm Hub solutions and see our community impact.",
-  },
-}
-
-const showcaseProjects = [
-  {
-    title: "CodeStorm Hub Portfolio",
-    description: "Our own community website built with modern web technologies and accessibility-first design.",
-    category: "Community Platform",
-    technologies: ["Next.js", "Tailwind CSS", "Radix UI", "TypeScript"],
-    stats: {
-      contributors: 5,
-      stars: 0,
-      forks: 0,
-    },
-    links: {
-      website: "https://codestorm-hub.github.io",
-      github: "https://github.com/CodeStorm-Hub/CodeStorm-Hub.github.io",
-    },
-    featured: true,
-    image: "https://github.com/CodeStorm-Hub.png",
-  },
-  // Placeholder for future projects
-  {
-    title: "Community Tools Suite",
-    description: "A collection of developer tools and utilities to enhance open source contribution workflows.",
-    category: "Developer Tools",
-    technologies: ["React", "Node.js", "PostgreSQL", "Docker"],
-    stats: {
-      contributors: 0,
-      stars: 0,
-      forks: 0,
-    },
-    links: {
-      website: "#",
-      github: "#",
-    },
-    featured: false,
-    image: "https://github.com/CodeStorm-Hub.png",
-    comingSoon: true,
-  },
-]
-
-const adopters = [
-  {
-    name: "Open Source Enthusiasts",
-    description: "Individual developers using our resources and contributing to projects",
-    type: "Community",
-    logo: "https://github.com/CodeStorm-Hub.png",
-    size: "Individual Contributors",
-  },
-  // Placeholder for future adopters
-  {
-    name: "Educational Institutions",
-    description: "Universities and coding bootcamps using our learning resources",
-    type: "Education",
-    logo: "https://github.com/CodeStorm-Hub.png",
-    size: "Coming Soon",
-    comingSoon: true,
-  },
-]
-
-const communityStats = [
-  {
-    label: "Community Members",
-    value: "Growing",
-    icon: HeartIcon,
-  },
-  {
-    label: "Projects",
-    value: "1+",
-    icon: RocketIcon,
-  },
-  {
-    label: "Contributors",
-    value: "5+",
-    icon: StarIcon,
-  },
-  {
-    label: "Countries",
-    value: "Global",
-    icon: GlobeIcon,
-  },
-]
+export const metadata = {
+  title: "Commercial SaaS Showcase // StormCom & StormERP | CodeStorm Hub",
+  description: "Architectural deep dive into CodeStorm's flagship platforms: StormCom AI E-Commerce and StormERP Enterprise Solution.",
+};
 
 export default function ShowcasePage() {
   return (
-    <div className="py-12">
-      <Container>
-        <div className="space-y-12">
-          {/* Hero */}
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight">Community Showcase</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover the amazing projects and organizations that are part of the CodeStorm Hub ecosystem. 
-              See how our community is making an impact in the open source world.
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto font-mono">
+      {/* Header */}
+      <div className="border-b border-storm-border pb-8 mb-12 space-y-4">
+        <div className="telemetry-badge text-storm-cyan">
+          <Server className="w-3.5 h-3.5 text-storm-volt" />
+          <span>FLAGSHIP ARCHITECTURE DOSSIER</span>
+        </div>
+        <h1 className="text-4xl sm:text-6xl font-black uppercase text-storm-white tracking-tight">
+          COMMERCIAL ENGINES.
+        </h1>
+        <p className="text-sm sm:text-base text-storm-muted max-w-3xl font-sans font-light leading-relaxed">
+          Deep-dive inspection of CodeStorm&apos;s proprietary enterprise SaaS applications. Built to handle heavy real-time traffic, automated intelligence, and complex business operations.
+        </p>
+      </div>
+
+      {/* =========================================================
+          FLAGSHIP 01: StormCom
+         ========================================================= */}
+      <section className="mb-20 border border-storm-border bg-storm-titanium p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-storm-border">
+          <div className="flex items-center gap-3">
+            <span className="telemetry-badge text-storm-cyan font-bold">SAAS // PROPRIETARY</span>
+            <span className="text-xs text-storm-muted">RELEASE: v2.4-PRODUCTION</span>
+          </div>
+          <a
+            href="https://codestormhub.live"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 border border-storm-cyan bg-storm-cyan text-storm-void text-xs font-bold hover:bg-transparent hover:text-storm-cyan transition-all flex items-center gap-1.5"
+          >
+            <span>LAUNCH STORMCOM LIVE</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          <div className="space-y-6">
+            <div>
+              <span className="text-xs text-storm-volt uppercase font-bold tracking-widest">
+                01 // ARTIFICIAL INTELLIGENCE PLATFORM
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black uppercase text-storm-white mt-1">
+                StormCom
+              </h2>
+              <p className="text-sm text-storm-cyan font-bold mt-2">
+                AI-Powered Multi-Vendor E-Commerce Operating System
+              </p>
+            </div>
+
+            <p className="text-sm text-storm-muted font-sans leading-relaxed">
+              StormCom is an autonomous e-commerce engine designed for modern merchants requiring predictive operational intelligence. Rather than passively recording sales, StormCom acts as an active AI copilot: analyzing consumer behavioral patterns, predicting seasonal demand, and automating targeted marketing cycles.
             </p>
-          </div>
 
-          {/* Community Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {communityStats.map((stat, index) => {
-              const Icon = stat.icon
-              return (
-                <Card key={index} className="text-center">
-                  <CardHeader className="pb-2">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <CardTitle className="text-2xl">{stat.value}</CardTitle>
-                    <CardDescription className="text-sm">{stat.label}</CardDescription>
-                  </CardHeader>
-                </Card>
-              )
-            })}
-          </div>
-
-          {/* Featured Projects */}
-          <div>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Explore the projects that showcase the capabilities and principles of CodeStorm Hub development.
-              </p>
-            </div>
-            
-            <div className="space-y-6">
-              {showcaseProjects.map((project, index) => (
-                <Card key={index} className={project.featured ? "border-2 border-primary/20 bg-primary/5" : ""}>
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted flex-shrink-0">
-                        <Image
-                          src={project.image}
-                          alt={`${project.title} logo`}
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          {project.featured && (
-                            <span className="bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded">
-                              Featured
-                            </span>
-                          )}
-                          {project.comingSoon && (
-                            <span className="bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400 text-xs font-medium px-2 py-1 rounded">
-                              Coming Soon
-                            </span>
-                          )}
-                          <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded">
-                            {project.category}
-                          </span>
-                        </div>
-                        <CardTitle className="text-xl">{project.title}</CardTitle>
-                        <CardDescription className="text-base mt-1">{project.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="font-semibold mb-2 text-sm">Technologies Used:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="bg-muted text-muted-foreground text-xs px-2 py-1 rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Stats & Links */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <StarIcon className="h-3 w-3" />
-                          <span>{project.stats.stars} stars</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <span>{project.stats.contributors} contributors</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <span>{project.stats.forks} forks</span>
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-2">
-                        {!project.comingSoon && (
-                          <>
-                            <Button variant="outline" size="sm" asChild>
-                              <a
-                                href={project.links.website}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                Visit Site
-                              </a>
-                            </Button>
-                            <Button size="sm" asChild>
-                              <a
-                                href={project.links.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                View Code
-                              </a>
-                            </Button>
-                          </>
-                        )}
-                        {project.comingSoon && (
-                          <Button size="sm" disabled>
-                            Coming Soon
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="space-y-3 pt-2">
+              <h4 className="text-xs uppercase tracking-wider text-storm-white font-bold">
+                KEY ARCHITECTURAL HIGHLIGHTS:
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-storm-muted font-sans">
+                {[
+                  "Real-Time Revenue & Order Telemetry",
+                  "AI Demand & Restock Predictions",
+                  "Multi-Store Unified Inventory",
+                  "Algorithmic Abandoned-Cart Recovery",
+                  "Automated Dynamic Price Optimization",
+                  "Encrypted PCI-Compliant Pipelines",
+                  "Sub-50ms Global Query Response",
+                  "Elastic Horizontal Scaling Clusters",
+                ].map((feat) => (
+                  <div key={feat} className="flex items-center gap-2 border border-storm-border p-2 bg-storm-panel">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-storm-cyan flex-shrink-0" />
+                    <span className="text-storm-white text-[11px] font-mono">{feat}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Adopters */}
-          <div>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Who&apos;s Using CodeStorm Hub</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Organizations and individuals who have adopted our solutions and contribute to our ecosystem.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {adopters.map((adopter, index) => (
-                <Card key={index} className={adopter.comingSoon ? "opacity-60" : ""}>
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-muted">
-                        <Image
-                          src={adopter.logo}
-                          alt={`${adopter.name} logo`}
-                          width={48}
-                          height={48}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <CardTitle className="text-lg">{adopter.name}</CardTitle>
-                          {adopter.comingSoon && (
-                            <span className="bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400 text-xs font-medium px-2 py-1 rounded">
-                              Coming Soon
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded">
-                            {adopter.type}
-                          </span>
-                          <span>{adopter.size}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{adopter.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Success Stories */}
-          <Card className="bg-gradient-to-r from-primary/5 to-blue-500/5 border-primary/20">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl">Success Stories</CardTitle>
-              <CardDescription className="text-base">
-                How our community is making a difference
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Open Source Impact</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Building transparent, accessible solutions that benefit the entire community
-                  </p>
+          {/* Visual Showcase Panel */}
+          <div className="space-y-4">
+            <div className="border border-storm-border bg-storm-void p-4 space-y-3">
+              <div className="flex items-center justify-between text-xs text-storm-muted border-b border-storm-border pb-2">
+                <span>DASHBOARD METRICS TELEMETRY</span>
+                <span className="text-storm-volt">LIVE STATUS // 99.98%</span>
+              </div>
+              <div className="aspect-video w-full bg-storm-titanium border border-storm-border overflow-hidden relative group">
+                <img
+                  src="/products/stormcom-dashboard.png"
+                  alt="StormCom Dashboard Overview"
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-center text-[10px] text-storm-muted pt-2">
+                <div className="border border-storm-border p-1.5">
+                  <div className="text-storm-white font-bold text-xs">AI ENGINE</div>
+                  <div>NEURAL FORECAST</div>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Learning & Growth</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Providing resources and mentorship opportunities for developers at all levels
-                  </p>
+                <div className="border border-storm-border p-1.5">
+                  <div className="text-storm-cyan font-bold text-xs">&lt; 12ms</div>
+                  <div>CACHE LATENCY</div>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Collaboration</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Connecting passionate individuals to work together on meaningful projects
-                  </p>
+                <div className="border border-storm-border p-1.5">
+                  <div className="text-storm-volt font-bold text-xs">100K+</div>
+                  <div>CONCURRENT TPS</div>
                 </div>
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild>
-                  <a href="/community">
-                    Join Our Community
-                  </a>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a href="/contributing">
-                    Start Contributing
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Submit Your Project */}
-          <Card className="bg-muted/50">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl">Showcase Your Project</CardTitle>
-              <CardDescription className="text-base">
-                Built something amazing with CodeStorm Hub? We&apos;d love to feature it!
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center space-y-4">
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Whether you&apos;ve contributed to our projects, used our resources, or built something 
-                inspired by our community principles, we want to celebrate your work and share it 
-                with others.
-              </p>
-              
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <p><strong>What we&apos;re looking for:</strong></p>
-                <ul className="space-y-1 max-w-md mx-auto text-left">
-                  <li>• Projects using our technologies or principles</li>
-                  <li>• Organizations adopting our solutions</li>
-                  <li>• Success stories and case studies</li>
-                  <li>• Community contributions and achievements</li>
-                </ul>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild>
-                  <a 
-                    href="https://github.com/CodeStorm-Hub/CodeStorm-Hub.github.io/issues/new"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Submit Project
-                  </a>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a href="/contact">
-                    Contact Us
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Newsletter */}
-          <div className="text-center space-y-4">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" asChild>
-                <a href="/blog">
-                  Read Success Stories
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a href="/projects">
-                  View All Projects
-                </a>
-              </Button>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Stay updated on new showcase additions and community highlights.
-            </p>
           </div>
         </div>
-      </Container>
+      </section>
+
+      {/* =========================================================
+          FLAGSHIP 02: StormERP
+         ========================================================= */}
+      <section className="mb-14 border border-storm-border bg-storm-titanium p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-storm-border">
+          <div className="flex items-center gap-3">
+            <span className="telemetry-badge text-storm-volt font-bold">SAAS // ENTERPRISE</span>
+            <span className="text-xs text-storm-muted">RELEASE: v3.1-ENTERPRISE</span>
+          </div>
+          <a
+            href="https://codestormhub.live/erp/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 border border-storm-volt bg-storm-volt text-storm-void text-xs font-bold hover:bg-transparent hover:text-storm-volt transition-all flex items-center gap-1.5"
+          >
+            <span>LAUNCH STORMERP LIVE</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          <div className="space-y-6">
+            <div>
+              <span className="text-xs text-storm-cyan uppercase font-bold tracking-widest">
+                02 // ENTERPRISE SYSTEM
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black uppercase text-storm-white mt-1">
+                StormERP
+              </h2>
+              <p className="text-sm text-storm-volt font-bold mt-2">
+                Unified Cloud Enterprise Resource Planning Engine
+              </p>
+            </div>
+
+            <p className="text-sm text-storm-muted font-sans leading-relaxed">
+              Engineered to replace fragmented business software with an all-in-one cloud platform. StormERP orchestrates complex multi-location manufacturing, double-entry financial accounting, human resources payroll, automated supply chains, and procurement lifecycles.
+            </p>
+
+            <div className="space-y-3 pt-2">
+              <h4 className="text-xs uppercase tracking-wider text-storm-white font-bold">
+                KEY ARCHITECTURAL HIGHLIGHTS:
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-storm-muted font-sans">
+                {[
+                  "Multi-Warehouse Inventory Ledger",
+                  "Automated Double-Entry Accounting",
+                  "Human Capital & Payroll Lifecycle",
+                  "Supply Chain & Procurement Workflows",
+                  "Multi-Currency & Tax Governance",
+                  "Role-Based Access Control (RBAC)",
+                  "Audit-Proof Compliance Logs",
+                  "Continuous Event-Driven Webhooks",
+                ].map((feat) => (
+                  <div key={feat} className="flex items-center gap-2 border border-storm-border p-2 bg-storm-panel">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-storm-volt flex-shrink-0" />
+                    <span className="text-storm-white text-[11px] font-mono">{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Visual Showcase Panel */}
+          <div className="space-y-4">
+            <div className="border border-storm-border bg-storm-void p-4 space-y-3">
+              <div className="flex items-center justify-between text-xs text-storm-muted border-b border-storm-border pb-2">
+                <span>ERP SYSTEM CONTROL PANEL</span>
+                <span className="text-storm-cyan">MULTI-TENANT // ONLINE</span>
+              </div>
+              <div className="aspect-video w-full bg-storm-titanium border border-storm-border overflow-hidden relative group">
+                <img
+                  src="/products/stormerp-dashboard.png"
+                  alt="StormERP Dashboard Overview"
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-center text-[10px] text-storm-muted pt-2">
+                <div className="border border-storm-border p-1.5">
+                  <div className="text-storm-white font-bold text-xs">ISO READY</div>
+                  <div>DATA AUDIT</div>
+                </div>
+                <div className="border border-storm-border p-1.5">
+                  <div className="text-storm-volt font-bold text-xs">UNIFIED</div>
+                  <div>LEDGER SYNC</div>
+                </div>
+                <div className="border border-storm-border p-1.5">
+                  <div className="text-storm-cyan font-bold text-xs">HIGH RES</div>
+                  <div>ENTERPRISE SLA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <div className="border-t border-storm-border pt-10 text-center space-y-4">
+        <h3 className="text-xl sm:text-2xl font-bold uppercase text-storm-white">
+          WANT A BESPOKE DEMONSTRATION OR ENTERPRISE DEPLOYMENT?
+        </h3>
+        <p className="text-xs text-storm-muted font-sans max-w-xl mx-auto">
+          Contact our lead architects directly for tailored white-label deployments, architectural consulting, or custom module integrations.
+        </p>
+        <div className="pt-2">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-storm-cyan bg-storm-cyan text-storm-void font-bold text-xs hover:bg-transparent hover:text-storm-cyan transition-all"
+          >
+            <span>TRANSMIT INQUIRY TO LEAD ARCHITECT</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
     </div>
-  )
+  );
 }

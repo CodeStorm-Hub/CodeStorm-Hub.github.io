@@ -1,50 +1,52 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { SkipLinks } from "@/components/ui/skip-links";
-import { ThemeProvider } from "@/lib/theme-context";
+import { SmoothScrollProvider } from "@/components/motion/smooth-scroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap", // Better font loading performance
+  display: "swap",
   preload: true,
-  fallback: ['system-ui', 'arial'],
+  fallback: ["system-ui", "sans-serif"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
-  preload: false, // Only preload primary font
-  fallback: ['ui-monospace', 'monaco'],
+  preload: true,
+  fallback: ["ui-monospace", "monospace"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "CodeStorm Hub",
+    default: "CodeStorm Hub // Cybernetic Software Engineering Forge",
     template: "%s | CodeStorm Hub",
   },
-  description: "A vibrant community of open source enthusiasts, researchers, and creators. We collaborate on powerful open-source solutions.",
-  keywords: ["open source", "community", "collaboration", "development", "research"],
-  authors: [{ name: "CodeStorm Hub Team" }],
+  description:
+    "An elite collective of open-source software engineers, researchers, and systems architects forging resilient SaaS platforms and high-throughput software.",
+  keywords: [
+    "CodeStorm",
+    "Open Source",
+    "StormCom",
+    "StormERP",
+    "Creative Developer",
+    "Systems Architecture",
+    "Software Engineering",
+  ],
+  authors: [{ name: "CodeStorm Engineering Team" }],
   creator: "CodeStorm Hub",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://codestorm-hub.github.io",
-    title: "CodeStorm Hub",
-    description: "A vibrant community of open source enthusiasts, researchers, and creators.",
+    title: "CodeStorm Hub // Cybernetic Software Forge",
+    description:
+      "An elite collective forging resilient open-source SaaS platforms and high-throughput software.",
     siteName: "CodeStorm Hub",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "CodeStorm Hub",
-    description: "A vibrant community of open source enthusiasts, researchers, and creators.",
   },
 };
 
@@ -54,20 +56,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#07080b] text-[#f3f4f6] selection:bg-[#00f0ff] selection:text-[#07080b] min-h-screen flex flex-col`}
       >
-        <ThemeProvider>
-          <SkipLinks />
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main id="main-content" className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+        <SmoothScrollProvider>
+          <Header />
+          <main className="flex-1 w-full">{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

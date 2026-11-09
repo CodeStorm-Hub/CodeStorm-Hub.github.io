@@ -1,137 +1,130 @@
-import { Container } from "@/components/ui/container"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
-import Image from "next/image"
-import type { Metadata } from "next"
-import { getAllTeamMembers } from "@/lib/team-data"
+import React from "react";
+import { getAllTeamMembers } from "@/lib/team-data";
+import { ShieldCheck } from "lucide-react";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Team",
-  description: "Meet the passionate individuals behind CodeStorm Hub and our open-source community.",
-  openGraph: {
-    title: "Team | CodeStorm Hub",
-    description: "Meet the passionate individuals behind CodeStorm Hub and our open-source community.",
-  },
-}
+export const metadata = {
+  title: "Architects Dossier // Core Engineering Roster | CodeStorm Hub",
+  description: "Inspect the engineering profiles, disciplines, and identities of CodeStorm's core software architects.",
+};
 
 export default function TeamPage() {
-  const teamMembers = getAllTeamMembers()
+  const teamMembers = getAllTeamMembers();
 
   return (
-    <div className="py-12">
-      <Container>
-        <div className="space-y-12">
-          {/* Hero */}
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight">Meet Our Team</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              CodeStorm Hub is powered by a diverse community of developers, researchers, 
-              and innovators from around the world. Together, we&apos;re building the future of open source.
-            </p>
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto font-mono">
+      {/* Header */}
+      <div className="border-b border-storm-border pb-8 mb-12 space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-storm-muted">
+          <div className="telemetry-badge text-storm-volt">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>ARCHITECT_ROSTER // 7 ACTIVE PROFILES</span>
           </div>
-
-          {/* Team Members */}
-          {teamMembers.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {teamMembers.map((member, index) => (
-                <Card key={index} className="text-center h-full">
-                  <CardHeader className="pb-4">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-muted border-2 border-primary/20">
-                      <Image
-                        src={member.image}
-                        alt={`${member.name} avatar`}
-                        width={96}
-                        height={96}
-                        className="w-full h-full object-cover"
-                        unoptimized={true}
-                        priority={index < 3}
-                      />
-                    </div>
-                    <CardTitle className="text-lg">{member.name}</CardTitle>
-                    <CardDescription className="font-medium text-primary">{member.role}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
-                    <div className="flex justify-center gap-2">
-                      {member.social.github && member.social.github !== '#' && (
-                        <Button variant="outline" size="sm" asChild>
-                          <a
-                            href={member.social.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${member.name} GitHub profile`}
-                          >
-                            <GitHubLogoIcon className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      )}
-                      {member.social.linkedin && member.social.linkedin !== '#' && (
-                        <Button variant="outline" size="sm" asChild>
-                          <a
-                            href={member.social.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${member.name} LinkedIn profile`}
-                          >
-                            <LinkedInLogoIcon className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      )}
-                      {member.social.twitter && member.social.twitter !== '#' && (
-                        <Button variant="outline" size="sm" asChild>
-                          <a
-                            href={member.social.twitter}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${member.name} Twitter profile`}
-                          >
-                            <TwitterLogoIcon className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">Team information is being updated. Please check back soon!</p>
-            </div>
-          )}
-
-          {/* Join Us Section */}
-          <Card className="bg-primary/5 border-primary/20">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl">Join Our Team</CardTitle>
-              <CardDescription className="text-base">
-                We&apos;re always looking for passionate contributors to join our community
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center space-y-4">
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Whether you&apos;re a developer, designer, writer, or just passionate about open source, 
-                there&apos;s a place for you in the CodeStorm Hub community. Join us and help build 
-                amazing projects together.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild>
-                  <a href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener noreferrer">
-                    <GitHubLogoIcon className="mr-2 h-4 w-4" />
-                    Browse Projects
-                  </a>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a href="/contributing">
-                    View Contributing Guide
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="text-[11px] text-storm-muted">
+            SECURITY CLEARANCE: <strong className="text-storm-cyan">LEVEL_4_FULL_ACCESS</strong>
+          </div>
         </div>
-      </Container>
+
+        <h1 className="text-4xl sm:text-6xl font-black uppercase text-storm-white tracking-tight">
+          THE ARCHITECTS.
+        </h1>
+        <p className="text-sm sm:text-base text-storm-muted max-w-3xl font-sans font-light leading-relaxed">
+          Meet the engineers, platform specialists, and intelligence researchers behind the CodeStorm ecosystem. 
+          Each architect drives distinct disciplines across scalable system design, distributed infrastructure, neural models, and full-stack execution.
+        </p>
+      </div>
+
+      {/* Architects Dossier Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {teamMembers.map((member, idx) => (
+          <div
+            key={member.name}
+            className="border-2 border-storm-border bg-storm-titanium p-6 flex flex-col justify-between hover:border-storm-cyan transition-all group relative overflow-hidden"
+          >
+            {/* Top Identity Badge */}
+            <div>
+              <div className="flex items-center justify-between text-xs text-storm-muted mb-4 border-b border-storm-border pb-3">
+                <span className="telemetry-badge text-[10px] text-storm-cyan">
+                  IDENTIFIER #{String(idx + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[10px] font-mono text-storm-volt">VERIFIED_ACTIVE</span>
+              </div>
+
+              {/* Photo & Scanline Overlay */}
+              <div className="aspect-[4/3] w-full bg-storm-panel border border-storm-border overflow-hidden relative mb-5 grayscale group-hover:grayscale-0 transition-all">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-storm-void/80 via-transparent to-transparent" />
+                <div className="absolute bottom-2 left-2 text-[10px] text-storm-white font-mono bg-storm-void/90 px-2 py-0.5 border border-storm-border">
+                  ARCHITECT // {member.name.split(" ")[0].toUpperCase()}
+                </div>
+              </div>
+
+              {/* Details */}
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold text-storm-white group-hover:text-storm-cyan transition-colors">
+                  {member.name}
+                </h3>
+                <p className="text-xs text-storm-volt font-bold tracking-wide">
+                  {member.role}
+                </p>
+                <p className="text-xs text-storm-muted font-sans leading-relaxed pt-2">
+                  {member.bio}
+                </p>
+              </div>
+            </div>
+
+            {/* Social Links & Comms */}
+            <div className="mt-6 pt-4 border-t border-storm-border flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2">
+                {member.social.github && member.social.github !== "#" && (
+                  <a
+                    href={member.social.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${member.name} GitHub`}
+                    className="p-1.5 border border-storm-border hover:border-storm-cyan text-storm-muted hover:text-storm-white bg-storm-panel transition-colors"
+                  >
+                    <GitHubLogoIcon className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                {member.social.linkedin && member.social.linkedin !== "#" && (
+                  <a
+                    href={member.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${member.name} LinkedIn`}
+                    className="p-1.5 border border-storm-border hover:border-storm-volt text-storm-muted hover:text-storm-white bg-storm-panel transition-colors"
+                  >
+                    <LinkedInLogoIcon className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
+
+              <span className="text-[10px] text-storm-muted font-mono">
+                DISCIPLINE READY
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Roster Bottom Note */}
+      <div className="mt-16 border-t border-storm-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-storm-muted">
+        <div>
+          <span>WANT TO CONTRIBUTE OR JOIN THE COLLECTIVE?</span>
+        </div>
+        <Link
+          href="/contributing"
+          className="text-storm-cyan hover:underline flex items-center gap-1 font-bold"
+        >
+          <span>READ CONTRIBUTING DIRECTIVES &rarr;</span>
+        </Link>
+      </div>
     </div>
-  )
+  );
 }
